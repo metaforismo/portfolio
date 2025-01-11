@@ -82,11 +82,12 @@ export default function Home() {
             <Image 
               src="/images/inazuma.jpg"
               alt="Francesco Giannicola"
-              width={128}
-              height={128}
-              className={`rounded-full mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover border-4 ${
+              width={150}
+              height={150}
+              className={`mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover border-4 ${
                 darkMode ? 'border-white/30' : 'border-black/30'
               }`}
+              style={{ borderRadius: '100px' }}
             />
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi 👋, I'm Francesco Giannicola
@@ -214,7 +215,7 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
                 <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
                   <Image 
-                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&hide_rank=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}&include_all_commits=true`}
+                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'radical' : 'default'}&hide_border=true&count_private=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage`}
                     alt="GitHub Stats"
                     width={300}
                     height={150}
@@ -223,7 +224,7 @@ export default function Home() {
                 </div>
                 <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
                   <Image 
-                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}&include_all_commits=true`}
+                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'radical' : 'default'}&hide_border=true&langs_count=6`}
                     alt="Top Languages"
                     width={300}
                     height={150}
