@@ -1,21 +1,15 @@
 'use client'
 
-import { useState, useCallback } from 'react'
-import { Sun, Moon, Github, Mail, Linkedin, Youtube, ArrowLeft } from 'lucide-react'
+import { useState } from 'react'
+import { Sun, Moon, Github, Mail, Linkedin, Youtube } from 'lucide-react'
 import { FaSquareXTwitter } from "react-icons/fa6"
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { loadStarsPreset } from "tsparticles-preset-stars"
-import Particles from "react-tsparticles"
-import { Engine } from "tsparticles-engine"
+import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Portfolio() {
+export default function Home() {
   const [darkMode, setDarkMode] = useState(true)
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadStarsPreset(engine)
-  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -40,64 +34,12 @@ export default function Portfolio() {
     }
   ]
 
-  const skills = [
-    { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "Solidity", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
-    { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-    { name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
-    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
-  ]
-
   return (
     <div className={`min-h-screen relative ${
       darkMode 
         ? 'bg-[rgb(10,10,10)] text-white' 
         : 'bg-white text-gray-900'
     }`}>
-      <Particles
-        init={particlesInit}
-        options={{
-          preset: "stars",
-          background: {
-            opacity: 0
-          },
-          particles: {
-            number: {
-              value: 150
-            },
-            color: {
-              value: "#ffffff"
-            },
-            opacity: {
-              value: { min: 0.1, max: 0.5 }
-            },
-            size: {
-              value: { min: 1, max: 3 }
-            },
-            move: {
-              enable: true,
-              speed: 0.2,
-              direction: "none",
-              random: true,
-              straight: false,
-              outModes: "out"
-            },
-            links: {
-              enable: true,
-              distance: 150,
-              color: "#ffffff",
-              opacity: 0.1,
-              width: 1
-            }
-          }
-        }}
-        className="absolute inset-0 -z-10"
-      />
-      
       <div className="relative">
         {/* Header */}
         <header className="fixed top-0 w-full backdrop-blur-sm z-50 transition-all duration-300">
@@ -137,10 +79,14 @@ export default function Portfolio() {
         {/* Hero Section */}
         <main className="container mx-auto px-4 pt-32 text-center">
           <div className="mb-8 animate-fadeIn">
-            <img 
+            <Image 
               src="/images/inazuma.jpg"
               alt="Francesco Giannicola"
-              className="rounded-full w-32 h-32 mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover"
+              width={128}
+              height={128}
+              className={`rounded-full mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover border-4 ${
+                darkMode ? 'border-white/30' : 'border-black/30'
+              }`}
             />
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi 👋, I'm Francesco Giannicola
@@ -267,24 +213,30 @@ export default function Portfolio() {
             <div className="flex flex-col items-center space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
                 <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
-                  <img 
-                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&hide_rank=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}`}
+                  <Image 
+                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&hide_rank=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}&include_all_commits=true`}
                     alt="GitHub Stats"
+                    width={300}
+                    height={150}
                     className="w-full"
                   />
                 </div>
                 <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
-                  <img 
-                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}`}
+                  <Image 
+                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}&include_all_commits=true`}
                     alt="Top Languages"
+                    width={300}
+                    height={150}
                     className="w-full"
                   />
                 </div>
               </div>
               <div className="w-full max-w-3xl">
-                <img 
+                <Image 
                   src={`https://ghchart.rshah.org/metaforismo`}
                   alt="Contribution Graph"
+                  width={1000}
+                  height={200}
                   className="w-full rounded-lg"
                   style={{ filter: darkMode ? 'invert(1)' : 'none' }}
                 />
@@ -314,10 +266,15 @@ export default function Portfolio() {
               ].map((skill, index) => (
                 <div 
                   key={index} 
-                  className={`p-4 rounded-lg bg-transparent backdrop-blur-sm border border-gray-200/20 
-                    flex flex-col items-center justify-center hover:scale-110 transition-all duration-300`}
+                  className="p-4 rounded-lg bg-transparent backdrop-blur-sm border border-gray-200/20 flex flex-col items-center justify-center hover:scale-110 transition-all duration-300"
                 >
-                  <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-2" />
+                  <Image 
+                    src={skill.icon} 
+                    alt={skill.name} 
+                    width={48}
+                    height={48}
+                    className="mb-2" 
+                  />
                   <span className="text-sm">{skill.name}</span>
                 </div>
               ))}
