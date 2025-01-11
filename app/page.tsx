@@ -243,7 +243,7 @@ export default function Portfolio() {
                       variant="outline"
                       className={`w-full hover:scale-105 transition-transform duration-300 ${
                         darkMode 
-                          ? 'border-white/50 bg-transparent hover:bg-white/10' 
+                          ? 'border-white/50 bg-transparent hover:bg-white/10 text-white' 
                           : 'border-gray-300 bg-transparent hover:bg-gray-100'
                       }`}
                       onClick={() => window.open(project.repoUrl, '_blank')}
