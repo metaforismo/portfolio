@@ -1,12 +1,19 @@
 'use client'
 
-import { useState } from 'react'
-import { Sun, Moon, Github, Mail, Linkedin, Youtube } from 'lucide-react'
+import { useState, useCallback } from 'react'
+import { Sun, Moon, Github, Mail, Linkedin, Youtube, ArrowLeft, Twitter } from 'lucide-react'
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { loadStarsPreset } from "tsparticles-preset-stars"
+import Particles from "react-tsparticles"
+import { Engine } from "tsparticles-engine"
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(true)
+
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadStarsPreset(engine)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -44,9 +51,39 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className={`min-h-screen relative ${darkMode ? 'bg-gradient-to-br from-gray-900 to-purple-900 text-white' : 'bg-gradient-to-br from-blue-50 to-purple-100 text-gray-900'}`}>
-      {/* Blurred background effect */}
-      <div className={`fixed inset-0 bg-[url('/api/placeholder/1920/1080')] opacity-10 ${darkMode ? 'blur-3xl' : 'blur-xl'}`}></div>
+    <div className={`min-h-screen relative ${
+      darkMode 
+        ? 'bg-gradient-to-br from-gray-900 via-purple-900/30 to-transparent text-white' 
+        : 'bg-gradient-to-br from-blue-50 via-purple-100/30 to-transparent text-gray-900'
+    }`}>
+      <Particles
+        init={particlesInit}
+        options={{
+          preset: "stars",
+          background: {
+            opacity: 0
+          },
+          particles: {
+            number: {
+              value: 100
+            },
+            color: {
+              value: darkMode ? "#ffffff" : "#000000"
+            },
+            opacity: {
+              value: { min: 0.1, max: 0.5 }
+            },
+            size: {
+              value: { min: 1, max: 3 }
+            },
+            move: {
+              enable: true,
+              speed: 0.2
+            }
+          }
+        }}
+        className="absolute inset-0 -z-10"
+      />
       
       <div className="relative">
         {/* Header */}
@@ -88,8 +125,8 @@ export default function Portfolio() {
         <main className="container mx-auto px-4 pt-32 text-center">
           <div className="mb-8 animate-fadeIn">
             <img 
-              src="/inazuma.jpg"
-              alt="Avatar"
+              src="/images/profile.jpg"
+              alt="Francesco Giannicola"
               className="rounded-full w-32 h-32 mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover"
             />
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -116,6 +153,14 @@ export default function Portfolio() {
                 onClick={() => window.open('https://www.linkedin.com/in/francescogiannicola/', '_blank')}
               >
                 <Linkedin className="h-5 w-5" />
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://x.com/metaforismoo?s=21', '_blank')}
+              >
+                <Twitter className="h-5 w-5" />
               </Button>
               <Button 
                 variant="ghost" 
@@ -262,31 +307,35 @@ export default function Portfolio() {
           </section>
 
           {/* GitHub Stats Section */}
-          <section className="mb-32">
+          <section className="mb-16">
             <div className="relative py-4 mb-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-purple-300/20"></div>
+                <div className={`w-full border-t ${darkMode ? 'border-purple-300/20' : 'border-gray-400/50'}`}></div>
               </div>
             </div>
-            <h3 className="text-2xl font-bold mb-8">GitHub Stats</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <img 
-                  src="https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=transparent&text_color=ffffff&title_color=ffffff&icon_color=purple&hide_border=true" 
-                  alt="GitHub Stats"
-                  className="w-full"
-                />
-                <img 
-                  src="https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=transparent&text_color=ffffff&title_color=ffffff&icon_color=purple&hide_border=true" 
-                  alt="Top Languages"
-                  className="w-full"
-                />
+            <h3 className="text-2xl font-bold mb-6">GitHub Stats</h3>
+            <div className="flex flex-col items-center space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
+                <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
+                  <img 
+                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'transparent' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&hide_rank=true&card_width=300`}
+                    alt="GitHub Stats"
+                    className="w-full"
+                  />
+                </div>
+                <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
+                  <img 
+                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'transparent' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&card_width=300`}
+                    alt="Top Languages"
+                    className="w-full"
+                  />
+                </div>
               </div>
-              <div>
+              <div className="w-full max-w-3xl">
                 <img 
-                  src="https://github-contribution-graph.ez4o.com/?username=metaforismo&theme=purple&hide_border=true" 
+                  src={`https://github-readme-activity-graph.vercel.app/graph?username=metaforismo&theme=${darkMode ? 'react-dark' : 'minimal'}&hide_border=true&area=true&point=false&custom_title=Contribution%20Graph&line=8B5CF6&color=${darkMode ? 'ffffff' : '000000'}&area_color=8B5CF6`}
                   alt="Contribution Graph"
-                  className="w-full"
+                  className="w-full rounded-lg"
                 />
               </div>
             </div>
@@ -296,7 +345,7 @@ export default function Portfolio() {
           <section className="mb-32">
             <div className="relative py-4 mb-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-purple-300/20"></div>
+                <div className={`w-full border-t ${darkMode ? 'border-purple-300/20' : 'border-gray-400/50'}`}></div>
               </div>
             </div>
             <h3 className="text-2xl font-bold mb-8">Skills</h3>
@@ -358,6 +407,14 @@ export default function Portfolio() {
                 onClick={() => window.open('https://www.linkedin.com/in/francescogiannicola/', '_blank')}
               >
                 <Linkedin className="h-5 w-5" />
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://x.com/metaforismoo?s=21', '_blank')}
+              >
+                <Twitter className="h-5 w-5" />
               </Button>
               <Button 
                 variant="ghost" 
