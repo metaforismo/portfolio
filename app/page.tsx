@@ -160,7 +160,7 @@ export default function Home() {
                 I have a particular fondness for the anime <strong>DragonBall</strong> 🐉, 
                 which has been a significant part of my entertainment journey. When it comes 
                 to films, <strong>Interstellar</strong> 🌌 stands out as my favorite, but I 
-                appreciate all of Christopher Nolan's works for their intricate storytelling 
+                appreciate all of Christopher Nolan&apos;s works for their intricate storytelling 
                 and thought-provoking themes.
               </p>
               <p>
