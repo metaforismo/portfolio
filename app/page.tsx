@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { loadStarsPreset } from "tsparticles-preset-stars"
 import Particles from "react-tsparticles"
 import { Engine } from "tsparticles-engine"
+import Link from 'next/link'
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(true)
@@ -54,7 +55,7 @@ export default function Portfolio() {
   return (
     <div className={`min-h-screen relative ${
       darkMode 
-        ? 'bg-gradient-to-b from-black to-gray-900 text-white' 
+        ? 'bg-gradient-to-b from-black via-gray-900 to-gray-900 text-white' 
         : 'bg-gradient-to-br from-blue-50 via-purple-100/30 to-transparent text-gray-900'
     }`}>
       <Particles
@@ -66,10 +67,10 @@ export default function Portfolio() {
           },
           particles: {
             number: {
-              value: 100
+              value: 150
             },
             color: {
-              value: darkMode ? "#ffffff" : "#000000"
+              value: "#ffffff"
             },
             opacity: {
               value: { min: 0.1, max: 0.5 }
@@ -79,7 +80,18 @@ export default function Portfolio() {
             },
             move: {
               enable: true,
-              speed: 0.2
+              speed: 0.2,
+              direction: "none",
+              random: true,
+              straight: false,
+              outModes: "out"
+            },
+            links: {
+              enable: true,
+              distance: 150,
+              color: "#ffffff",
+              opacity: 0.1,
+              width: 1
             }
           }
         }}
@@ -110,6 +122,12 @@ export default function Portfolio() {
               >
                 Blog
               </button>
+              <Link 
+                href="/cv"
+                className="hover:text-purple-400 transition-colors duration-300"
+              >
+                CV
+              </Link>
               <Button
                 variant="ghost"
                 size="icon"
@@ -384,7 +402,7 @@ export default function Portfolio() {
 
         {/* Footer */}
         <footer className={`w-full py-6 px-4 bg-transparent backdrop-blur-sm border-t border-gray-200/20`}>
-          <div className="container mx-auto flex justify-between items-center">
+          <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex space-x-4">
               <Button 
                 variant="ghost" 
@@ -426,6 +444,9 @@ export default function Portfolio() {
               >
                 <Youtube className="h-5 w-5" />
               </Button>
+            </div>
+            <div className="text-sm">
+              Mail: francescogiannicola1@gmail.com
             </div>
             <div className="text-sm">
               Made with ❤️ by metaforismo
