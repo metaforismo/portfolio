@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { Sun, Moon } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -87,11 +87,14 @@ export default function BlogPost() {
         </Button>
 
         <article className="max-w-4xl mx-auto">
-          <img 
-            src={post.image} 
-            alt={post.title} 
-            className="w-full h-64 object-cover rounded-lg mb-8"
-          />
+          <div className="relative w-full h-64 mb-8">
+            <Image 
+              src={post.image} 
+              alt={post.title} 
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
           
           <div className="space-y-4">
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>

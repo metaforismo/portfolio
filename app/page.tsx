@@ -19,7 +19,7 @@ export default function Home() {
   const projects = [
     {
       title: "TarsGPT",
-      description: "A robotic system replicating TARS' functionalities using ChatGPT and Whisper for language processing and mobility. Achieved 30% faster response time enabling real-time interactions.",
+      description: "A robotic system replicating TARS&apos; functionalities using ChatGPT and Whisper for language processing and mobility. Achieved 30% faster response time enabling real-time interactions.",
       repoUrl: "https://github.com/username/tarsgpt"
     },
     {
