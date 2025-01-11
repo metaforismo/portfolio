@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { Sun, Moon, Github, Mail, Linkedin, Youtube, ArrowLeft, Twitter } from 'lucide-react'
+import { Sun, Moon, Github, Mail, Linkedin, Youtube, ArrowLeft } from 'lucide-react'
+import { FaSquareXTwitter } from "react-icons/fa6"
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { loadStarsPreset } from "tsparticles-preset-stars"
@@ -53,7 +54,7 @@ export default function Portfolio() {
   return (
     <div className={`min-h-screen relative ${
       darkMode 
-        ? 'bg-gradient-to-br from-gray-900 via-purple-900/30 to-transparent text-white' 
+        ? 'bg-gradient-to-b from-black to-gray-900 text-white' 
         : 'bg-gradient-to-br from-blue-50 via-purple-100/30 to-transparent text-gray-900'
     }`}>
       <Particles
@@ -125,7 +126,7 @@ export default function Portfolio() {
         <main className="container mx-auto px-4 pt-32 text-center">
           <div className="mb-8 animate-fadeIn">
             <img 
-              src="/images/profile.jpg"
+              src="/images/inazuma.jpg"
               alt="Francesco Giannicola"
               className="rounded-full w-32 h-32 mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover"
             />
@@ -160,13 +161,13 @@ export default function Portfolio() {
                 className="hover:scale-110 transition-transform duration-300"
                 onClick={() => window.open('https://x.com/metaforismoo?s=21', '_blank')}
               >
-                <Twitter className="h-5 w-5" />
+                <FaSquareXTwitter className="h-5 w-5" />
               </Button>
               <Button 
                 variant="ghost" 
                 size="icon" 
                 className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.location.href = 'mailto:francescogiannicola1@gmail.com'}
+                onClick={() => window.open('mailto:francescogiannicola1@gmail.com', '_blank')}
               >
                 <Mail className="h-5 w-5" />
               </Button>
@@ -318,14 +319,14 @@ export default function Portfolio() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
                 <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
                   <img 
-                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'transparent' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&hide_rank=true&card_width=300`}
+                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&hide_rank=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}`}
                     alt="GitHub Stats"
                     className="w-full"
                   />
                 </div>
                 <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
                   <img 
-                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'transparent' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&card_width=300`}
+                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'dark' : 'default'}&text_color=${darkMode ? 'ffffff' : '000000'}&title_color=${darkMode ? 'ffffff' : '000000'}&icon_color=purple&hide_border=true&card_width=300&bg_color=${darkMode ? '000000' : 'ffffff'}`}
                     alt="Top Languages"
                     className="w-full"
                   />
@@ -333,9 +334,10 @@ export default function Portfolio() {
               </div>
               <div className="w-full max-w-3xl">
                 <img 
-                  src={`https://github-readme-activity-graph.vercel.app/graph?username=metaforismo&theme=${darkMode ? 'react-dark' : 'minimal'}&hide_border=true&area=true&point=false&custom_title=Contribution%20Graph&line=8B5CF6&color=${darkMode ? 'ffffff' : '000000'}&area_color=8B5CF6`}
+                  src={`https://ghchart.rshah.org/metaforismo`}
                   alt="Contribution Graph"
                   className="w-full rounded-lg"
+                  style={{ filter: darkMode ? 'invert(1)' : 'none' }}
                 />
               </div>
             </div>
@@ -388,7 +390,7 @@ export default function Portfolio() {
                 variant="ghost" 
                 size="icon" 
                 className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.location.href = 'mailto:francescogiannicola1@gmail.com'}
+                onClick={() => window.open('mailto:francescogiannicola1@gmail.com', '_blank')}
               >
                 <Mail className="h-5 w-5" />
               </Button>
@@ -414,7 +416,7 @@ export default function Portfolio() {
                 className="hover:scale-110 transition-transform duration-300"
                 onClick={() => window.open('https://x.com/metaforismoo?s=21', '_blank')}
               >
-                <Twitter className="h-5 w-5" />
+                <FaSquareXTwitter className="h-5 w-5" />
               </Button>
               <Button 
                 variant="ghost" 
