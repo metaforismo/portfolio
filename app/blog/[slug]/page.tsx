@@ -10,9 +10,9 @@ const posts = {
   'future-of-ai-robotics': {
     title: "The Future of AI in Robotics",
     content: `
-      Artificial Intelligence is revolutionizing the field of robotics in ways we could only dream of a few years ago. Through my work on the TARS project, I've witnessed firsthand how AI can enhance robotic systems' capabilities and response times.
+      Artificial Intelligence is revolutionizing the field of robotics in ways we could only dream of a few years ago. Through my work on the TARS project, I&apos;ve witnessed firsthand how AI can enhance robotic systems&apos; capabilities and response times.
 
-      The integration of ChatGPT and Whisper has been particularly groundbreaking. These technologies have enabled more natural human-robot interactions and significantly improved response times. The 30% improvement in response time we achieved wasn't just a number - it represented a fundamental shift in how robots can interact with humans in real-time.
+      The integration of ChatGPT and Whisper has been particularly groundbreaking. These technologies have enabled more natural human-robot interactions and significantly improved response times. The 30% improvement in response time we achieved wasn&apos;t just a number - it represented a fundamental shift in how robots can interact with humans in real-time.
 
       Key Innovations:
       - Natural Language Processing improvements
@@ -20,7 +20,7 @@ const posts = {
       - Enhanced mobility control systems
       - Adaptive learning capabilities
 
-      The future holds even more promise. As we continue to develop these technologies, we're seeing possibilities for applications in healthcare, disaster response, and space exploration. The key will be maintaining the balance between capability and reliability while ensuring these systems remain safe and controllable.
+      The future holds even more promise. As we continue to develop these technologies, we&apos;re seeing possibilities for applications in healthcare, disaster response, and space exploration. The key will be maintaining the balance between capability and reliability while ensuring these systems remain safe and controllable.
     `,
     image: "/blog/ai-robotics.jpg",
     date: "2024-01-15",
@@ -29,9 +29,9 @@ const posts = {
   'blockchain-voting-systems': {
     title: "Blockchain Voting Systems",
     content: `
-      The DeVoSy project represents a significant step forward in securing democratic processes through blockchain technology. By implementing a decentralized voting platform, we've demonstrated how blockchain can enhance electoral security while maintaining accessibility.
+      The DeVoSy project represents a significant step forward in securing democratic processes through blockchain technology. By implementing a decentralized voting platform, we&apos;ve demonstrated how blockchain can enhance electoral security while maintaining accessibility.
 
-      Our system achieved a 40% improvement in security metrics while handling over 10,000 simultaneous voters with minimal latency. This wasn't just about adding blockchain to existing systems - it required rethinking the entire voting process from the ground up.
+      Our system achieved a 40% improvement in security metrics while handling over 10,000 simultaneous voters with minimal latency. This wasn&apos;t just about adding blockchain to existing systems - it required rethinking the entire voting process from the ground up.
 
       Key Features:
       - Immutable vote recording
@@ -48,9 +48,9 @@ const posts = {
   'football-analytics-revolution': {
     title: "Football Analytics Revolution",
     content: `
-      The intersection of sports and technology has always fascinated me, and our recent work in football analytics demonstrates just how powerful this combination can be. By implementing YOLO for player and ball tracking, we've achieved a 20% improvement in object detection accuracy.
+      The intersection of sports and technology has always fascinated me, and our recent work in football analytics demonstrates just how powerful this combination can be. By implementing YOLO for player and ball tracking, we&apos;ve achieved a 20% improvement in object detection accuracy.
 
-      This enhanced accuracy isn't just about better numbers - it's about providing coaches and analysts with more reliable data to make strategic decisions. The optimization of tactical insight extraction has led to 3x faster data processing, making real-time analysis during matches a reality.
+      This enhanced accuracy isn&apos;t just about better numbers - it&apos;s about providing coaches and analysts with more reliable data to make strategic decisions. The optimization of tactical insight extraction has led to 3x faster data processing, making real-time analysis during matches a reality.
 
       Technical Achievements:
       - Advanced computer vision implementation
@@ -58,7 +58,7 @@ const posts = {
       - Automated tactical analysis
       - Performance prediction models
 
-      The future of football analytics looks incredibly promising. As we continue to refine these technologies, we're opening up new possibilities for understanding and improving the beautiful game.
+      The future of football analytics looks incredibly promising. As we continue to refine these technologies, we&apos;re opening up new possibilities for understanding and improving the beautiful game.
     `,
     image: "/blog/football-analytics.jpg",
     date: "2024-01-05",
