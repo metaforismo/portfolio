@@ -91,7 +91,7 @@ export default function Home() {
               />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Hi 👋, I'm Francesco Giannicola
+              Hi 👋, I&apos;m Francesco Giannicola
             </h1>
             <h2 className="text-xl md:text-2xl mb-6">
               BSc student - Computer Science & Artificial Intelligence
