@@ -79,16 +79,17 @@ export default function Home() {
         {/* Hero Section */}
         <main className="container mx-auto px-4 pt-32 text-center">
           <div className="mb-8 animate-fadeIn">
-            <Image 
-              src="/images/inazuma.jpg"
-              alt="Francesco Giannicola"
-              width={150}
-              height={150}
-              className={`mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover border-4 ${
-                darkMode ? 'border-white/30' : 'border-black/30'
-              }`}
-              style={{ borderRadius: '100px' }}
-            />
+            <div className="relative w-[150px] h-[150px] mx-auto mb-6">
+              <Image 
+                src="/images/inazuma.jpg"
+                alt="Francesco Giannicola"
+                fill
+                className={`object-cover border-4 hover:scale-105 transition-transform duration-300 ${
+                  darkMode ? 'border-white/30' : 'border-black/30'
+                }`}
+                style={{ borderRadius: '50%' }}
+              />
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi 👋, I'm Francesco Giannicola
             </h1>
@@ -97,6 +98,12 @@ export default function Home() {
               <br />
               Università della Calabria
             </h2>
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+                <span className="mr-1.5 h-2 w-2 rounded-full bg-green-500"></span>
+                Available for Jobs
+              </span>
+            </div>
             <div className="flex justify-center space-x-4">
               <Button 
                 variant="ghost" 
@@ -200,48 +207,6 @@ export default function Home() {
                   </CardFooter>
                 </Card>
               ))}
-            </div>
-          </section>
-
-          {/* GitHub Stats Section */}
-          <section className="mb-16">
-            <div className="relative py-4 mb-8">
-              <div className="absolute inset-0 flex items-center">
-                <div className={`w-full border-t ${darkMode ? 'border-purple-300/20' : 'border-gray-400/50'}`}></div>
-              </div>
-            </div>
-            <h3 className="text-2xl font-bold mb-6">GitHub Stats</h3>
-            <div className="flex flex-col items-center space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
-                <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
-                  <Image 
-                    src={`https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=${darkMode ? 'radical' : 'default'}&hide_border=true&count_private=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage`}
-                    alt="GitHub Stats"
-                    width={300}
-                    height={150}
-                    className="w-full"
-                  />
-                </div>
-                <div className="bg-transparent backdrop-blur-sm border border-gray-200/20 rounded-xl p-4 hover:scale-105 transition-all duration-300">
-                  <Image 
-                    src={`https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=${darkMode ? 'radical' : 'default'}&hide_border=true&langs_count=6`}
-                    alt="Top Languages"
-                    width={300}
-                    height={150}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-              <div className="w-full max-w-3xl">
-                <Image 
-                  src={`https://ghchart.rshah.org/metaforismo`}
-                  alt="Contribution Graph"
-                  width={1000}
-                  height={200}
-                  className="w-full rounded-lg"
-                  style={{ filter: darkMode ? 'invert(1)' : 'none' }}
-                />
-              </div>
             </div>
           </section>
 
