@@ -401,52 +401,57 @@ export default function Portfolio() {
         </main>
 
         {/* Footer */}
-        <footer className={`w-full py-6 px-4 bg-transparent backdrop-blur-sm border-t border-gray-200/20`}>
+        <footer className={`w-full py-6 px-4 bg-transparent backdrop-blur-sm border-t ${darkMode ? 'border-white/12' : 'border-gray-200'}`}>
           <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex space-x-4">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.open('mailto:francescogiannicola1@gmail.com', '_blank')}
+            <div className="flex flex-col items-start space-y-4">
+              <div className="flex space-x-4">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="hover:scale-110 transition-transform duration-300"
+                  onClick={() => window.open('mailto:francescogiannicola1@gmail.com', '_blank')}
+                >
+                  <Mail className="h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="hover:scale-110 transition-transform duration-300"
+                  onClick={() => window.open('https://github.com/metaforismo', '_blank')}
+                >
+                  <Github className="h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="hover:scale-110 transition-transform duration-300"
+                  onClick={() => window.open('https://www.linkedin.com/in/francescogiannicola/', '_blank')}
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="hover:scale-110 transition-transform duration-300"
+                  onClick={() => window.open('https://x.com/metaforismoo?s=21', '_blank')}
+                >
+                  <FaSquareXTwitter className="h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="hover:scale-110 transition-transform duration-300"
+                  onClick={() => window.open('https://www.youtube.com/channel/UCYaWvTE2XvKI2u-9mqJysdw', '_blank')}
+                >
+                  <Youtube className="h-5 w-5" />
+                </Button>
+              </div>
+              <a 
+                href="mailto:francescogiannicola1@gmail.com" 
+                className="text-sm hover:text-purple-400 transition-colors duration-300"
               >
-                <Mail className="h-5 w-5" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.open('https://github.com/metaforismo', '_blank')}
-              >
-                <Github className="h-5 w-5" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.open('https://www.linkedin.com/in/francescogiannicola/', '_blank')}
-              >
-                <Linkedin className="h-5 w-5" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.open('https://x.com/metaforismoo?s=21', '_blank')}
-              >
-                <FaSquareXTwitter className="h-5 w-5" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:scale-110 transition-transform duration-300"
-                onClick={() => window.open('https://www.youtube.com/channel/UCYaWvTE2XvKI2u-9mqJysdw', '_blank')}
-              >
-                <Youtube className="h-5 w-5" />
-              </Button>
-            </div>
-            <div className="text-sm">
-              Mail: francescogiannicola1@gmail.com
+                francescogiannicola1@gmail.com
+              </a>
             </div>
             <div className="text-sm">
               Made with ❤️ by metaforismo
