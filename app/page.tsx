@@ -66,6 +66,12 @@ export default function Portfolio() {
               >
                 Projects
               </button>
+              <button 
+                onClick={() => scrollToSection('blog')}
+                className="hover:text-purple-400 transition-colors duration-300"
+              >
+                Blog
+              </button>
               <Button
                 variant="ghost"
                 size="icon"
@@ -82,9 +88,9 @@ export default function Portfolio() {
         <main className="container mx-auto px-4 pt-32 text-center">
           <div className="mb-8 animate-fadeIn">
             <img 
-              src="/api/placeholder/150/150"
+              src="/inazuma.jpg"
               alt="Avatar"
-              className="rounded-full w-32 h-32 mx-auto mb-6 hover:scale-105 transition-transform duration-300"
+              className="rounded-full w-32 h-32 mx-auto mb-6 hover:scale-105 transition-transform duration-300 object-cover"
             />
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi 👋, I'm Francesco Giannicola
@@ -95,13 +101,28 @@ export default function Portfolio() {
               Università della Calabria
             </h2>
             <div className="flex justify-center space-x-4">
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://github.com/metaforismo', '_blank')}
+              >
                 <Github className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://www.linkedin.com/in/francescogiannicola/', '_blank')}
+              >
                 <Linkedin className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.location.href = 'mailto:francescogiannicola1@gmail.com'}
+              >
                 <Mail className="h-5 w-5" />
               </Button>
             </div>
@@ -109,14 +130,12 @@ export default function Portfolio() {
 
           {/* About Section */}
           <section id="about" className="max-w-2xl mx-auto my-32 scroll-mt-20">
-            <div className="relative py-4">
+            <div className="relative py-4 mb-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-purple-300/20"></div>
               </div>
-              <div className="relative flex justify-center">
-                <span className="bg-gradient-to-br from-purple-400 to-purple-600 text-white px-4 py-1 rounded-full text-sm">About Me</span>
-              </div>
             </div>
+            <h3 className="text-2xl font-bold mb-4">About Me</h3>
             <div className="space-y-4 text-lg">
               <p>
                 Passionate self-learner with a knack for dissecting the world around me. 
@@ -146,10 +165,8 @@ export default function Portfolio() {
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-purple-300/20"></div>
               </div>
-              <div className="relative flex justify-center">
-                <span className="bg-gradient-to-br from-purple-400 to-purple-600 text-white px-4 py-1 rounded-full text-sm">Projects</span>
-              </div>
             </div>
+            <h3 className="text-2xl font-bold mb-8">Projects</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project, index) => (
                 <Card key={index} className="bg-transparent backdrop-blur-sm border border-gray-200/20 hover:scale-105 transition-all duration-300">
@@ -166,7 +183,7 @@ export default function Portfolio() {
                   <CardFooter>
                     <Button
                       variant="outline"
-                      className="w-full hover:scale-105 transition-transform duration-300 border-purple-500/50 bg-transparent hover:bg-purple-500/10"
+                      className={`w-full hover:scale-105 transition-transform duration-300 border-purple-500/50 bg-transparent hover:bg-purple-500/10 ${darkMode ? 'text-white' : 'text-gray-900'}`}
                       onClick={() => window.open(project.repoUrl, '_blank')}
                     >
                       View Repository
@@ -177,24 +194,136 @@ export default function Portfolio() {
             </div>
           </section>
 
+          {/* Blog Section */}
+          <section id="blog" className="mb-32 scroll-mt-20">
+            <div className="relative py-4 mb-8">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-purple-300/20"></div>
+              </div>
+            </div>
+            <h3 className="text-2xl font-bold mb-8">Blog</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "The Future of AI in Robotics",
+                  description: "Exploring how artificial intelligence is revolutionizing robotics and automation, with a focus on the TARS project.",
+                  image: "/blog/ai-robotics.jpg",
+                  date: "2024-01-15",
+                  slug: "future-of-ai-robotics"
+                },
+                {
+                  title: "Blockchain Voting Systems",
+                  description: "A deep dive into how blockchain technology can make voting systems more secure and transparent.",
+                  image: "/blog/blockchain-voting.jpg",
+                  date: "2024-01-10",
+                  slug: "blockchain-voting-systems"
+                },
+                {
+                  title: "Football Analytics Revolution",
+                  description: "How data science and computer vision are changing the way we analyze football matches.",
+                  image: "/blog/football-analytics.jpg",
+                  date: "2024-01-05",
+                  slug: "football-analytics-revolution"
+                }
+              ].map((post, index) => (
+                <Card key={index} className="bg-transparent backdrop-blur-sm border border-gray-200/20 hover:scale-105 transition-all duration-300 cursor-pointer"
+                  onClick={() => window.location.href = `/blog/${post.slug}`}
+                >
+                  <CardHeader>
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-48 object-cover rounded-t-lg mb-4"
+                    />
+                    <h4 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      {post.title}
+                    </h4>
+                  </CardHeader>
+                  <CardContent>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                      {post.description}
+                    </p>
+                  </CardContent>
+                  <CardFooter className="flex justify-between items-center">
+                    <span className="text-sm text-gray-500">
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      By Francesco Giannicola
+                    </span>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* GitHub Stats Section */}
+          <section className="mb-32">
+            <div className="relative py-4 mb-8">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-purple-300/20"></div>
+              </div>
+            </div>
+            <h3 className="text-2xl font-bold mb-8">GitHub Stats</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <img 
+                  src="https://github-readme-stats.vercel.app/api?username=metaforismo&show_icons=true&theme=transparent&text_color=ffffff&title_color=ffffff&icon_color=purple&hide_border=true" 
+                  alt="GitHub Stats"
+                  className="w-full"
+                />
+                <img 
+                  src="https://github-readme-stats.vercel.app/api/top-langs/?username=metaforismo&layout=compact&theme=transparent&text_color=ffffff&title_color=ffffff&icon_color=purple&hide_border=true" 
+                  alt="Top Languages"
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <img 
+                  src="https://github-contribution-graph.ez4o.com/?username=metaforismo&theme=purple&hide_border=true" 
+                  alt="Contribution Graph"
+                  className="w-full"
+                />
+              </div>
+            </div>
+          </section>
+
           {/* Skills Section */}
           <section className="mb-32">
             <div className="relative py-4 mb-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-purple-300/20"></div>
               </div>
-              <div className="relative flex justify-center">
-                <span className="bg-gradient-to-br from-purple-400 to-purple-600 text-white px-4 py-1 rounded-full text-sm">Skills</span>
-              </div>
             </div>
+            <h3 className="text-2xl font-bold mb-8">Skills</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {skills.map((skill, index) => (
+              {[
+                { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+                { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+                { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+                { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+                { name: "Solidity", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+                { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+                { name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+                { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                { name: "Photoshop", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
+                { name: "Rust", icon: "devicon-rust-line colored", isDevicon: true }
+              ].map((skill, index) => (
                 <div 
                   key={index} 
                   className={`p-4 rounded-lg bg-transparent backdrop-blur-sm border border-gray-200/20 
                     flex flex-col items-center justify-center hover:scale-110 transition-all duration-300`}
                 >
-                  <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-2" />
+                  {skill.isDevicon ? (
+                    <i className={`${skill.icon} text-4xl mb-2`}></i>
+                  ) : (
+                    <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-2" />
+                  )}
                   <span className="text-sm">{skill.name}</span>
                 </div>
               ))}
@@ -206,16 +335,36 @@ export default function Portfolio() {
         <footer className={`w-full py-6 px-4 bg-transparent backdrop-blur-sm border-t border-gray-200/20`}>
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.location.href = 'mailto:francescogiannicola1@gmail.com'}
+              >
                 <Mail className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://github.com/metaforismo', '_blank')}
+              >
                 <Github className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://www.linkedin.com/in/francescogiannicola/', '_blank')}
+              >
                 <Linkedin className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform duration-300">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:scale-110 transition-transform duration-300"
+                onClick={() => window.open('https://www.youtube.com/channel/UCYaWvTE2XvKI2u-9mqJysdw', '_blank')}
+              >
                 <Youtube className="h-5 w-5" />
               </Button>
             </div>
