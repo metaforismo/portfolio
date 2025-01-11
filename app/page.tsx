@@ -55,8 +55,8 @@ export default function Portfolio() {
   return (
     <div className={`min-h-screen relative ${
       darkMode 
-        ? 'bg-gradient-to-b from-black via-gray-900 to-gray-900 text-white' 
-        : 'bg-gradient-to-br from-blue-50 via-purple-100/30 to-transparent text-gray-900'
+        ? 'bg-[rgb(10,10,10)] text-white' 
+        : 'bg-white text-gray-900'
     }`}>
       <Particles
         init={particlesInit}
@@ -116,12 +116,6 @@ export default function Portfolio() {
               >
                 Projects
               </button>
-              <button 
-                onClick={() => scrollToSection('blog')}
-                className="hover:text-purple-400 transition-colors duration-300"
-              >
-                Blog
-              </button>
               <Link 
                 href="/cv"
                 className="hover:text-purple-400 transition-colors duration-300"
@@ -132,9 +126,9 @@ export default function Portfolio() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setDarkMode(!darkMode)}
-                className="rounded-full p-2 ml-4"
+                className="rounded-full p-2"
               >
-                {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+                {!darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
               </Button>
             </nav>
           </div>
@@ -247,78 +241,15 @@ export default function Portfolio() {
                   <CardFooter>
                     <Button
                       variant="outline"
-                      className={`w-full hover:scale-105 transition-transform duration-300 border-purple-500/50 bg-transparent hover:bg-purple-500/10 ${darkMode ? 'text-white' : 'text-gray-900'}`}
+                      className={`w-full hover:scale-105 transition-transform duration-300 ${
+                        darkMode 
+                          ? 'border-white/50 bg-transparent hover:bg-white/10' 
+                          : 'border-gray-300 bg-transparent hover:bg-gray-100'
+                      }`}
                       onClick={() => window.open(project.repoUrl, '_blank')}
                     >
                       View Repository
                     </Button>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          </section>
-
-          {/* Blog Section */}
-          <section id="blog" className="mb-32 scroll-mt-20">
-            <div className="relative py-4 mb-8">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-purple-300/20"></div>
-              </div>
-            </div>
-            <h3 className="text-2xl font-bold mb-8">Blog</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "The Future of AI in Robotics",
-                  description: "Exploring how artificial intelligence is revolutionizing robotics and automation, with a focus on the TARS project.",
-                  image: "/blog/ai-robotics.jpg",
-                  date: "2024-01-15",
-                  slug: "future-of-ai-robotics"
-                },
-                {
-                  title: "Blockchain Voting Systems",
-                  description: "A deep dive into how blockchain technology can make voting systems more secure and transparent.",
-                  image: "/blog/blockchain-voting.jpg",
-                  date: "2024-01-10",
-                  slug: "blockchain-voting-systems"
-                },
-                {
-                  title: "Football Analytics Revolution",
-                  description: "How data science and computer vision are changing the way we analyze football matches.",
-                  image: "/blog/football-analytics.jpg",
-                  date: "2024-01-05",
-                  slug: "football-analytics-revolution"
-                }
-              ].map((post, index) => (
-                <Card key={index} className="bg-transparent backdrop-blur-sm border border-gray-200/20 hover:scale-105 transition-all duration-300 cursor-pointer"
-                  onClick={() => window.location.href = `/blog/${post.slug}`}
-                >
-                  <CardHeader>
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
-                      className="w-full h-48 object-cover rounded-t-lg mb-4"
-                    />
-                    <h4 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                      {post.title}
-                    </h4>
-                  </CardHeader>
-                  <CardContent>
-                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                      {post.description}
-                    </p>
-                  </CardContent>
-                  <CardFooter className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      By Francesco Giannicola
-                    </span>
                   </CardFooter>
                 </Card>
               ))}
@@ -379,20 +310,14 @@ export default function Portfolio() {
                 { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
                 { name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
                 { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-                { name: "Photoshop", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
-                { name: "Rust", icon: "devicon-rust-line colored", isDevicon: true }
+                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
               ].map((skill, index) => (
                 <div 
                   key={index} 
                   className={`p-4 rounded-lg bg-transparent backdrop-blur-sm border border-gray-200/20 
                     flex flex-col items-center justify-center hover:scale-110 transition-all duration-300`}
                 >
-                  {skill.isDevicon ? (
-                    <i className={`${skill.icon} text-4xl mb-2`}></i>
-                  ) : (
-                    <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-2" />
-                  )}
+                  <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-2" />
                   <span className="text-sm">{skill.name}</span>
                 </div>
               ))}
