@@ -90,7 +90,7 @@ export default function BlogPost() {
           <div className="relative w-full h-64 mb-8">
             <Image 
               src={post.image} 
-              alt={post.title} 
+              alt={post.title}
               fill
               className="object-cover rounded-lg"
             />
