@@ -19,13 +19,13 @@ export default function Home() {
   const projects = [
     {
       title: "TarsGPT",
-      description: "A robotic system replicating TARS&apos; functionalities using ChatGPT and Whisper for language processing and mobility. Achieved 30% faster response time enabling real-time interactions.",
-      repoUrl: "https://github.com/username/tarsgpt"
+      description: "A robotic system replicating TARS from Interstellar; functionalities using ChatGPT and Whisper for language processing and mobility. Achieved 30% faster response time enabling real-time interactions.",
+      repoUrl: "https://github.com/metaforismo/TarsGPT"
     },
     {
       title: "DeVoSy",
       description: "A decentralized voting platform enhancing electoral security by 40%. Built with blockchain technology to handle 10,000+ simultaneous voters with minimal latency.",
-      repoUrl: "https://github.com/username/devosy"
+      repoUrl: "https://github.com/metaforismo/DeVoSy"
     },
     {
       title: "Football Analysis",
@@ -302,7 +302,7 @@ export default function Home() {
               </a>
             </div>
             <div className="text-sm">
-              Made with ❤️ by metaforismo
+              Made with 🧡 by metaforismo
             </div>
           </div>
         </footer>
