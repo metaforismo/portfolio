@@ -24,28 +24,51 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+    --sunglow: 45 100% 62%;
+    --battle-gray: 42 8% 45%;
+    --raisin-black: 0 3% 14%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 0 3% 14%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 0 3% 14%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 0 3% 14%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
+    --primary: 45 100% 62%;
+    --primary-foreground: 0 3% 14%;
+    --secondary: 0 3% 20%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 0 3% 20%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 0 3% 20%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: 0 3% 20%;
+    --input: 0 3% 20%;
+    --ring: 45 100% 62%;
+    --sunglow: 45 100% 62%;
+    --battle-gray: 42 8% 45%;
+    --raisin-black: 0 3% 14%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Add solid background colors for light and dark mode */
+  body {
+    background-color: #ffffff;
+  }
+  
+  .dark body {
+    background-color: #252121;
   }
 }
 
@@ -53,15 +76,93 @@
   .animate-fadeIn {
     animation: fadeIn 1s ease-in-out;
   }
+  
+  .animate-pulse-border {
+    animation: pulseBorder 2s infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s infinite;
+    box-shadow: 0 0 0 rgba(255, 209, 62, 0);
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out forwards;
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pulseBorder {
+  0% {
+    border-color: rgba(255, 209, 62, 0.7);
+  }
+  50% {
+    border-color: rgba(255, 209, 62, 1);
+  }
+  100% {
+    border-color: rgba(255, 209, 62, 0.7);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 209, 62, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 209, 62, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 209, 62, 0.5);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  header nav {
+    gap: 1rem;
+  }
+  
+  header nav button {
+    font-size: 0.875rem;
+  }
+  
+  .grid {
+    gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .timeline-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
   }
 }
