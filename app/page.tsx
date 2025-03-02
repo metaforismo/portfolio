@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { Sun, Moon, Github, Mail, Linkedin, Youtube, GraduationCap, Briefcase, Award, Menu } from 'lucide-react'
+import { Github, Mail, Linkedin, Youtube, GraduationCap, Briefcase, Award, Menu } from 'lucide-react'
 import { FaSquareXTwitter, FaFlutter, FaInstagram } from "react-icons/fa6"
 import { FaSwift, FaPython, FaReact, FaNodeJs, FaHtml5, FaGitSquare, FaDocker } from "react-icons/fa"
 import { SiExpo, SiSolidity, SiTensorflow } from "react-icons/si"
@@ -9,12 +9,11 @@ import { IoLogoJavascript } from "react-icons/io5"
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 export default function Home() {
-  const { theme, setTheme } = useTheme()
+  const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
