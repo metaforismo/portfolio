@@ -41,8 +41,7 @@ interface ParticlesProps {
   vy?: number
 }
 function hexToRgb(hex: string): number[] {
-  // Ensure we have a valid hex color
-  hex = (hex || "#ffffff").replace("#", "")
+  hex = hex.replace("#", "")
 
   if (hex.length === 3) {
     hex = hex
@@ -77,21 +76,6 @@ const Particles: React.FC<ParticlesProps> = ({
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
-  const colorRef = useRef(color)
-
-  // Update colorRef when color prop changes
-  useEffect(() => {
-    colorRef.current = color
-    console.log("Particles color updated:", color)
-    
-    // Force redraw when color changes
-    if (circles.current.length > 0) {
-      clearContext()
-      circles.current.forEach(circle => {
-        drawCircle(circle, true)
-      })
-    }
-  }, [color])
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -104,7 +88,7 @@ const Particles: React.FC<ParticlesProps> = ({
     return () => {
       window.removeEventListener("resize", initCanvas)
     }
-  }, [])
+  }, [color])
 
   useEffect(() => {
     onMouseMove()
@@ -166,10 +150,9 @@ const Particles: React.FC<ParticlesProps> = ({
     const translateY = 0
     const pSize = Math.floor(Math.random() * 2) + size
     const alpha = 0
-    // Increase the targetAlpha for better visibility
-    const targetAlpha = parseFloat((Math.random() * 0.8 + 0.2).toFixed(1))
-    const dx = (Math.random() - 0.5) * 0.2
-    const dy = (Math.random() - 0.5) * 0.2
+    const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
+    const dx = (Math.random() - 0.5) * 0.1
+    const dy = (Math.random() - 0.5) * 0.1
     const magnetism = 0.1 + Math.random() * 4
     return {
       x,
@@ -185,7 +168,7 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   }
 
-  const rgb = hexToRgb(colorRef.current)
+  const rgb = hexToRgb(color)
 
   const drawCircle = (circle: Circle, update = false) => {
     if (context.current) {
@@ -237,9 +220,6 @@ const Particles: React.FC<ParticlesProps> = ({
 
   const animate = () => {
     clearContext()
-    // Use the current color from the ref
-    const rgb = hexToRgb(colorRef.current)
-    
     circles.current.forEach((circle: Circle, i: number) => {
       // Handle the alpha value
       const edge = [
@@ -269,14 +249,7 @@ const Particles: React.FC<ParticlesProps> = ({
         (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
         ease
 
-      if (context.current) {
-        context.current.translate(circle.translateX, circle.translateY)
-        context.current.beginPath()
-        context.current.arc(circle.x, circle.y, circle.size, 0, 2 * Math.PI)
-        context.current.fillStyle = `rgba(${rgb.join(", ")}, ${circle.alpha})`
-        context.current.fill()
-        context.current.setTransform(dpr, 0, 0, dpr, 0, 0)
-      }
+      drawCircle(circle, true)
 
       // circle gets out of the canvas
       if (

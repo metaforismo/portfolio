@@ -69,10 +69,10 @@ export function ParticlesBackground({ children }: ParticlesBackgroundProps) {
       <div className="fixed inset-0 -z-10 min-h-screen">
         <Particles
           className="h-full w-full min-h-screen"
-          quantity={200}
+          quantity={50}
           staticity={30}
           ease={50}
-          size={0.8}
+          size={0.6}
           color={color}
           refresh={mounted}
         />
