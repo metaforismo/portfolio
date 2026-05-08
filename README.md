@@ -1,42 +1,77 @@
 # Portfolio
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+Personal portfolio of [Francesco Giannicola](https://github.com/metaforismo), built as a single Notion-style page.
 
-## Features
+Live: <https://francescogiannicola.com>
 
-- 🌓 Dark/Light mode
-- 📱 Fully responsive design
-- ✨ Modern UI with smooth animations
-- 🎨 Clean and minimal interface
-- 🚀 Fast and optimized performance
+## Stack
 
-## Tech Stack
+- **Next.js 15** (App Router) + **React 19**
+- **TypeScript**
+- **Tailwind CSS 3** + **shadcn/ui** components
+- **next-themes** for light/dark
+- **Lucide** icons
+- **@vercel/analytics**
+- GitHub contributions widget by [@ncdai](https://chanhdai.com/components/github-contributions)
 
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Lucide Icons
-- Radix UI
+## Run locally
 
-## Getting Started
-
-1. Clone the repository:
-```bash
-git clone https://github.com/metaforismo/portfolio.git
-```
-
-2. Install dependencies:
 ```bash
 npm install
-```
-
-3. Run the development server:
-```bash
 npm run dev
+# http://localhost:3000
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build   # production build
+npm run lint    # eslint
+```
+
+## Project layout
+
+```
+app/
+  layout.tsx          # root layout, fonts, providers
+  page.tsx            # composes the Notion-style page
+  globals.css         # theme tokens (light + dark) + Notion callouts
+  blog/[slug]         # placeholder blog page
+
+components/
+  page-header.tsx     # title, properties list, social row
+  copy-email-button.tsx
+  copy-email-listener.tsx
+  github-contributions.tsx
+  contribution-graph.tsx
+  github-theme-picker.tsx
+  section-heading.tsx
+  theme-provider.tsx
+  theme-toggle.tsx
+  sections/           # one file per page section
+  ui/                 # shadcn/ui primitives
+
+lib/
+  data.ts             # all content lives here
+  utils.ts            # cn()
+  get-cached-contributions.ts
+  hooks/use-copy-email.ts
+
+public/
+  cv.pdf
+  images/
+```
+
+## Edit content
+
+All copy lives in `lib/data.ts`: profile, projects, services, skills, experience,
+certifications, social links. No CMS, just edit the file and redeploy.
+
+## Themes
+
+- **Light / Dark** toggle in the page header (default: dark, Notion-style).
+- A separate **GitHub contributions theme picker** sits next to the contribution
+  graph and offers GitHub Default · Winter · Halloween palettes. It only
+  re-colours the heatmap cells; the rest of the page stays neutral.
 
 ## License
 
-MIT License
+MIT
