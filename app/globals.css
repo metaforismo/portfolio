@@ -3,166 +3,255 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-    --sunglow: 45 100% 62%;
-    --battle-gray: 42 8% 45%;
-    --raisin-black: 0 3% 14%;
-  }
-
+  /* Default = Notion dark */
+  :root,
   .dark {
-    --background: 0 3% 14%;
-    --foreground: 210 40% 98%;
-    --card: 0 3% 14%;
-    --card-foreground: 210 40% 98%;
-    --popover: 0 3% 14%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 45 100% 62%;
-    --primary-foreground: 0 3% 14%;
-    --secondary: 0 3% 20%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 0 3% 20%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 0 3% 20%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 0 3% 20%;
-    --input: 0 3% 20%;
-    --ring: 45 100% 62%;
-    --sunglow: 45 100% 62%;
-    --battle-gray: 42 8% 45%;
-    --raisin-black: 0 3% 14%;
+    /* shadcn semantic vars (HSL space-separated) */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 90%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 90%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 90%;
+    --primary: 48 96% 53%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 16%;
+    --accent-foreground: 0 0% 90%;
+    --destructive: 0 73% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 48 96% 53%;
+    --radius: 0.375rem;
+
+    /* Notion dark tokens */
+    --bg: #191919;
+    --bg-soft: #1f1f1f;
+    --bg-hover: #252525;
+    --bg-elevated: #2a2a2a;
+    --text: #e6e6e5;
+    --text-soft: #b4b3b0;
+    --muted: #9b9a97;
+    --muted-soft: #6b6a67;
+    --border-line: #2f2f2f;
+    --border-soft: #252525;
+    --divider: #252525;
+
+    /* Notion callout palettes (subtle bg + colored text) */
+    --callout-default-bg: #2a2a2a;
+    --callout-default-text: #e6e6e5;
+    --callout-yellow-bg: rgba(250, 204, 21, 0.1);
+    --callout-yellow-text: #fbbf24;
+    --callout-yellow-border: rgba(250, 204, 21, 0.2);
+    --callout-blue-bg: rgba(96, 165, 250, 0.1);
+    --callout-blue-text: #93c5fd;
+    --callout-blue-border: rgba(96, 165, 250, 0.2);
+    --callout-green-bg: rgba(74, 222, 128, 0.08);
+    --callout-green-text: #86efac;
+    --callout-green-border: rgba(74, 222, 128, 0.18);
+    --callout-purple-bg: rgba(192, 132, 252, 0.08);
+    --callout-purple-text: #d8b4fe;
+    --callout-purple-border: rgba(192, 132, 252, 0.2);
+    --callout-orange-bg: rgba(251, 146, 60, 0.08);
+    --callout-orange-text: #fdba74;
+    --callout-orange-border: rgba(251, 146, 60, 0.2);
+    --callout-red-bg: rgba(248, 113, 113, 0.08);
+    --callout-red-text: #fca5a5;
+    --callout-red-border: rgba(248, 113, 113, 0.2);
+    --callout-gray-bg: #2a2a2a;
+    --callout-gray-text: #9b9a97;
+    --callout-gray-border: #383838;
+
+    --accent-yellow: #facc15;
+    --accent-yellow-soft: #fde68a;
+
+    /* GitHub contributions defaults — overridden per-theme by the picker */
+    --gh-l0: #1f1f1f;
+    --gh-l1: #0e4429;
+    --gh-l2: #006d32;
+    --gh-l3: #26a641;
+    --gh-l4: #39d353;
   }
 
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 33 8% 19%;
+    --card: 0 0% 100%;
+    --card-foreground: 33 8% 19%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 33 8% 19%;
+    --primary: 48 96% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 5% 96%;
+    --secondary-foreground: 33 8% 19%;
+    --muted: 40 5% 96%;
+    --muted-foreground: 30 3% 47%;
+    --accent: 40 5% 96%;
+    --accent-foreground: 33 8% 19%;
+    --destructive: 0 73% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 32 9% 91%;
+    --input: 32 9% 91%;
+    --ring: 48 96% 48%;
+
+    --bg: #ffffff;
+    --bg-soft: #f7f6f3;
+    --bg-hover: #f1efed;
+    --bg-elevated: #ebebea;
+    --text: #37352f;
+    --text-soft: #5a594f;
+    --muted: #787774;
+    --muted-soft: #a3a29d;
+    --border-line: #e9e9e7;
+    --border-soft: #f1efed;
+    --divider: #ececea;
+
+    --callout-default-bg: #f7f6f3;
+    --callout-default-text: #37352f;
+    --callout-yellow-bg: #fdf6e3;
+    --callout-yellow-text: #b18700;
+    --callout-yellow-border: #f5e5b1;
+    --callout-blue-bg: #e7f3f8;
+    --callout-blue-text: #0e6a8a;
+    --callout-blue-border: #cfe5ee;
+    --callout-green-bg: #e9f3eb;
+    --callout-green-text: #1b6230;
+    --callout-green-border: #cfe6d5;
+    --callout-purple-bg: #f0e9f9;
+    --callout-purple-text: #5b3294;
+    --callout-purple-border: #ddd0ee;
+    --callout-orange-bg: #fae8d0;
+    --callout-orange-text: #b6531a;
+    --callout-orange-border: #f1d2a4;
+    --callout-red-bg: #fbe4e4;
+    --callout-red-text: #a83232;
+    --callout-red-border: #f1c8c8;
+    --callout-gray-bg: #f1efed;
+    --callout-gray-text: #787774;
+    --callout-gray-border: #e3e1de;
+
+    --accent-yellow: #b18700;
+    --accent-yellow-soft: #f5e5b1;
+
+    --gh-l0: #ebedf0;
+    --gh-l1: #9be9a8;
+    --gh-l2: #40c463;
+    --gh-l3: #30a14e;
+    --gh-l4: #216e39;
+  }
+}
+
+@layer base {
   * {
-    @apply border-border;
+    border-color: var(--border-line);
   }
-  
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 240ms ease, color 240ms ease;
   }
-  
-  /* Add solid background colors for light and dark mode */
-  body {
-    background-color: #ffffff;
+
+  ::selection {
+    background-color: rgba(250, 204, 21, 0.35);
+    color: var(--text);
   }
-  
-  .dark body {
-    background-color: #252121;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-line);
+    border-radius: 999px;
+    border: 2px solid var(--bg);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-soft);
+  }
+
+  /* Notion-style hr */
+  hr {
+    border: 0;
+    height: 1px;
+    background: var(--divider);
+    margin: 0;
+  }
+
+  /* Inline code */
+  code {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.9em;
+    padding: 0.15em 0.4em;
+    background: var(--bg-elevated);
+    border-radius: 4px;
+    color: var(--callout-red-text);
+  }
+
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.6rem;
+    padding: 0.15rem 0.45rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-line);
+    border-radius: 4px;
+    color: var(--text-soft);
+    line-height: 1;
+    box-shadow: 0 1px 0 var(--border-line);
   }
 }
 
 @layer utilities {
-  .animate-fadeIn {
-    animation: fadeIn 1s ease-in-out;
+  .text-pretty {
+    text-wrap: pretty;
   }
-  
-  .animate-pulse-border {
-    animation: pulseBorder 2s infinite;
+  .text-balance {
+    text-wrap: balance;
   }
-  
-  .animate-pulse-glow {
-    animation: pulseGlow 2s infinite;
-    box-shadow: 0 0 0 rgba(255, 209, 62, 0);
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-  
-  .animate-slideDown {
-    animation: slideDown 0.3s ease-out forwards;
+  .no-scrollbar {
+    scrollbar-width: none;
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 200ms ease;
   }
-  to {
-    opacity: 1;
+  .link-underline:hover {
+    text-decoration-color: currentColor;
   }
-}
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  /* Notion-style hover row (used in projects + experience) */
+  .notion-row {
+    transition: background-color 100ms ease;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulseBorder {
-  0% {
-    border-color: rgba(255, 209, 62, 0.7);
-  }
-  50% {
-    border-color: rgba(255, 209, 62, 1);
-  }
-  100% {
-    border-color: rgba(255, 209, 62, 0.7);
-  }
-}
-
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 5px rgba(255, 209, 62, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 209, 62, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(255, 209, 62, 0.5);
-  }
-}
-
-@media (max-width: 640px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  header nav {
-    gap: 1rem;
-  }
-  
-  header nav button {
-    font-size: 0.875rem;
-  }
-  
-  .grid {
-    gap: 1rem;
-  }
-  
-  h1 {
-    font-size: 1.75rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  .timeline-item {
-    padding: 1rem;
-    margin-bottom: 1rem;
+  .notion-row:hover {
+    background-color: var(--bg-hover);
   }
 }
