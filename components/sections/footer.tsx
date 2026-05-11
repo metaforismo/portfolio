@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { Callout, SectionHeading } from "@/components/section-heading";
+import { Signature } from "@/components/signature";
 import { profile, socials } from "@/lib/data";
 
 export function Footer() {
@@ -60,8 +61,9 @@ export function Footer() {
         </ul>
       </div>
 
-      <footer className="mt-14 border-t border-[var(--divider)] pt-6 pb-4 text-[12px] text-[var(--muted)]">
+      <footer className="mt-14 flex items-end justify-between gap-4 border-t border-[var(--divider)] pt-6 pb-4 text-[12px] text-[var(--muted)]">
         <span>© {year} Francesco Giannicola</span>
+        <Signature />
       </footer>
     </section>
   );
