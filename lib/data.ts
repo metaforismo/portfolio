@@ -42,7 +42,7 @@ export type SocialLink = {
 export const socials: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/metaforismo", handle: "metaforismo" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/francescogiannicola/", handle: "francescogiannicola" },
-  { label: "X / Twitter", href: "https://x.com/metaforismoo", handle: "@metaforismoo" },
+  { label: "X / Twitter", href: "https://x.com/fragiannicola", handle: "@fragiannicola" },
   { label: "Instagram", href: "https://www.instagram.com/francescogiannicolaa/", handle: "@francescogiannicolaa" },
   { label: "YouTube", href: "https://www.youtube.com/channel/UCYaWvTE2XvKI2u-9mqJysdw", handle: "channel" },
 ];
