@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -19,6 +20,13 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap",
   weight: ["400", "500"],
+});
+
+const bulgaryRose = localFont({
+  src: "./fonts/bulgary-rose.otf",
+  variable: "--font-handwritten",
+  display: "swap",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -66,7 +74,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrains.variable}`}
+      className={`${inter.variable} ${jetbrains.variable} ${bulgaryRose.variable}`}
     >
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider>
