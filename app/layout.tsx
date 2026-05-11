@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Francesco Giannicola",
     description: "Computer Science & AI student building TarsGPT, DeVoSy, Apex2 and more.",
-    creator: "@metaforismoo",
+    creator: "@fragiannicola",
   },
 };
 
