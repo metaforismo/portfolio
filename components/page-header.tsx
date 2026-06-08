@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { AgeCounter } from "@/components/age-counter";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { profile, socials } from "@/lib/data";
@@ -83,6 +84,10 @@ function Properties() {
     <dl className="mt-8 grid grid-cols-[110px_1fr] gap-x-3 gap-y-1.5 text-[14px]">
       <Row icon={<MapPin className="h-3.5 w-3.5" strokeWidth={1.75} />} label="Location">
         <span className="text-[var(--text)]">{profile.location}</span>
+      </Row>
+
+      <Row icon={<span className="text-base leading-none">🎂</span>} label="Age">
+        <AgeCounter />
       </Row>
 
       <Row icon={<span className="text-base leading-none">🎓</span>} label="Status">

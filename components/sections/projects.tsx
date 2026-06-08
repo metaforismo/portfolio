@@ -16,7 +16,7 @@ export function Projects() {
     <section id="projects" className="scroll-mt-8">
       <SectionHeading
         emoji="🚀"
-        hint={`${projects.length} projects · 6 of 10 repos`}
+        hint={`${projects.length} of 12 repos`}
       >
         Selected work
       </SectionHeading>
