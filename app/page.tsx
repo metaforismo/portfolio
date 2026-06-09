@@ -1,3 +1,4 @@
+import { CommandPalette } from "@/components/command-palette";
 import { CopyEmailKeyboardListener } from "@/components/copy-email-listener";
 import { PageHeader } from "@/components/page-header";
 import { About } from "@/components/sections/about";
@@ -17,6 +18,7 @@ export default function HomePage() {
   return (
     <>
       <CopyEmailKeyboardListener />
+      <CommandPalette />
       <main className="mx-auto w-full max-w-[760px] px-5 pb-24 sm:px-8">
         <PageHeader />
 
