@@ -1,3 +1,4 @@
+import { CommandPalette } from "@/components/command-palette";
 import { CopyEmailKeyboardListener } from "@/components/copy-email-listener";
 import { PageHeader } from "@/components/page-header";
 import { About } from "@/components/sections/about";
@@ -5,7 +6,6 @@ import { Experience } from "@/components/sections/experience";
 import { Footer } from "@/components/sections/footer";
 import { GitHubSection } from "@/components/sections/github";
 import { Projects } from "@/components/sections/projects";
-import { SectionNav } from "@/components/section-nav";
 import { Services } from "@/components/sections/services";
 import { Skills } from "@/components/sections/skills";
 import { Writing } from "@/components/sections/writing";
@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <>
       <CopyEmailKeyboardListener />
-      <SectionNav />
+      <CommandPalette />
       <main className="mx-auto w-full max-w-[760px] px-5 pb-24 sm:px-8">
         <PageHeader />
 

@@ -1,4 +1,4 @@
-# Writing articles (from X) + side-dot navigation
+# Writing articles (from X) + ⌘K command-palette navigation
 
 ## Goal
 
@@ -7,8 +7,8 @@ Two additions to the one-page portfolio:
 1. **Writing section** lists curated articles that link out to posts/threads on X,
    instead of the current "Articles coming soon" placeholder. Adding a new article
    is a one-line edit to a data array.
-2. **Side-dot navigation**: a fixed vertical column of dots that highlights the
-   active section while scrolling and lets the visitor jump to any section.
+2. **⌘K command palette**: a searchable menu (keyboard shortcut + floating
+   trigger) to jump to any section. Responsive on mobile.
 
 ## Non-goals
 
@@ -53,29 +53,31 @@ export const articles: Article[] = [
 - Remove `app/blog/[slug]/page.tsx` (unused placeholder). Articles now point to X,
   so the internal blog route is dead code.
 
-## Feature 2 — Side-dot navigation
+## Feature 2 — ⌘K command palette
 
-### Component (`components/section-nav.tsx`, client)
+### Component (`components/command-palette.tsx`, client)
 
-- Fixed vertical column of dots, centered vertically on the left edge.
-- Visible only on `lg+` screens (hidden on mobile/tablet to avoid clutter).
+- Floating trigger pill, fixed bottom-left (icon-only on mobile, icon + "Jump to…"
+  + platform-aware `⌘K`/`Ctrl K` hint on `sm+`).
+- Opens with `⌘K` / `Ctrl+K` (global listener) or by clicking the trigger.
 - Source of truth: the existing `navAnchors` array in `lib/data.ts`.
-- Active section tracked with `IntersectionObserver`; the active dot is filled with
-  the accent color and slightly larger, inactive dots are small hollow dots.
-- Each dot is a link to `#<id>` with a Radix `Tooltip` showing the section label;
-  `aria-current="true"` on the active one; wrapped in a `<nav aria-label>` landmark.
-- Click scrolls smoothly to the section, unless `prefers-reduced-motion` is set
-  (then it jumps).
+- Modal dialog: search input filters sections by label; `↑`/`↓` move the
+  highlight, `Enter` jumps, `Esc` / backdrop click closes. Body scroll locked
+  while open; input autofocused.
+- Jumping scrolls smoothly to the section unless `prefers-reduced-motion` is set.
+- a11y: `role="dialog"` + `aria-modal`, `role="listbox"`/`option` with
+  `aria-selected`; platform hint set after mount to avoid hydration mismatch.
+- Fully responsive: modal is `max-w-[460px]`, full-width-minus-padding on mobile.
 
 ### Wiring
 
 - Add `id="home"` to the `<header>` in `components/page-header.tsx` so the "home"
   anchor resolves (all other anchor ids already exist on their sections).
-- Render `<SectionNav />` from `app/page.tsx` (specific to the one-page home, not the
-  global layout which also wraps other routes).
+- Render `<CommandPalette />` from `app/page.tsx`.
 
 ## Testing
 
-- `npm run build` and `npm run lint` pass.
-- Manual: dots highlight correctly while scrolling; clicking jumps to the section;
-  article card links open the X post; layout unaffected on mobile.
+- `npm run build`, `npm run lint`, `tsc --noEmit` pass.
+- Manual: palette opens via ⌘K and the trigger; filtering + arrow/Enter work;
+  jumping scrolls to the section; article card links open the X post; verified
+  responsive at 1280px and 390px.
