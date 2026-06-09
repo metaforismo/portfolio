@@ -25,7 +25,7 @@ const SOCIAL_ICONS: Record<string, LucideIcon> = {
 
 export function PageHeader() {
   return (
-    <header className="pt-12 sm:pt-20">
+    <header id="home" className="scroll-mt-8 pt-12 sm:pt-20">
       <div className="mb-8 flex items-center justify-between">
         <Link
           href="/"

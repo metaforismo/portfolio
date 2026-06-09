@@ -287,6 +287,32 @@ export const languages = [
   { name: "Spanish", level: "Basic" },
 ];
 
+/** A short piece of writing, published as a post or thread on X. */
+export type Article = {
+  title: string;
+  /** Link to the post / thread on X. */
+  href: string;
+  /** Publication date, ISO "YYYY-MM-DD". */
+  date: string;
+  /** One-line summary shown under the title. */
+  blurb?: string;
+  /** Badge label, e.g. "Thread" | "Post". Defaults to "X". */
+  source?: string;
+};
+
+/** Curated writing. Add a new article = add an entry here. */
+export const articles: Article[] = [
+  {
+    title:
+      "Personal Finance for Beginners: How to Build a Better Future with Your Money",
+    href: "https://x.com/fragiannicola/status/2064069685662884021",
+    date: "2026-06-08",
+    blurb:
+      "Before you invest, the most important thing isn't finding the perfect product — it's understanding yourself.",
+    source: "Thread",
+  },
+];
+
 export const navAnchors = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
