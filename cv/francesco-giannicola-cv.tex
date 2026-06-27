@@ -1,0 +1,157 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{fontspec}
+\usepackage{microtype}
+
+\ifdefined\pdfglyphtounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+\setmainfont{texgyreheros}[
+  Extension=.otf,
+  Ligatures=NoCommon,
+  UprightFont=*-regular,
+  BoldFont=*-bold,
+  ItalicFont=*-italic,
+  BoldItalicFont=*-bolditalic
+]
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\parskip}{0pt}
+
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.10in}
+\addtolength{\topmargin}{-0.62in}
+\addtolength{\textheight}{1.24in}
+
+\titleformat{\section}{
+  \vspace{-7pt}\scshape\raggedright\large
+}{}{0em}{}[\titlerule \vspace{-6pt}]
+
+\setlist[itemize]{leftmargin=0.16in,itemsep=1pt,topsep=1.5pt,parsep=0pt,partopsep=0pt}
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+  \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small #3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-6pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+  \vspace{-1pt}\item
+  \begin{tabular*}{0.99\textwidth}{l@{\extracolsep{\fill}}r}
+    \small\textbf{#1} & \small #2 \\
+  \end{tabular*}\vspace{-6pt}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in,label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\Huge \scshape Francesco Giannicola} \\ \vspace{2pt}
+  \small
+  Cosenza, Italy / Europe $|$
+  \href{mailto:francescogiannicola1@gmail.com}{francescogiannicola1@gmail.com} $|$
+  \href{https://github.com/metaforismo}{github.com/metaforismo} $|$
+  \href{https://www.linkedin.com/in/francescogiannicola/}{linkedin.com/in/francescogiannicola} $|$ \\
+  \href{https://francescogiannicola.com}{francescogiannicola.com}
+\end{center}
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Universita della Calabria}{Cosenza, Italy}
+    {BSc in Computer Science \& Artificial Intelligence; expected graduation 2027}{Sep. 2024 -- Present}
+    \resumeItemListStart
+      \resumeItem{Active member of the teaching quality committee; academic focus on AI systems, software engineering, algorithms, and reproducible technical work.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Projects \& Research}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {The Broadcast Ceiling / Learning Signal Density}{2026}
+    {Research Artifacts, Limes Labs}{\href{https://zenodo.org/records/20970205}{DOI: 10.5281/zenodo.20970205}}
+    \resumeItemListStart
+      \resumeItem{Developed a reproducible long-horizon RL credit-assignment artifact with finite-MDP audits, estimator-fidelity diagnostics, exact-gradient experiments, sequence-policy audits, unit tests, smoke checks, and a 32-page LaTeX paper.}
+      \resumeItem{Published v0.1.0 with GitHub release assets, SHA-256 manifest, reproducibility commands, 51 passing tests, and Zenodo DOI; built Learning Signal Density to audit sample efficiency with frozen splits and costed artifacts.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Jurevo}{2026 -- Present}
+    {Full-Stack AI Legal Workspace}{\href{https://jurevo.it}{jurevo.it}}
+    \resumeItemListStart
+      \resumeItem{Built an AI legal workspace for Italian law firms, combining authenticated web app, backend API, native Expo mobile app, document workflows, billing, storage, and LLM provider routing in a TypeScript monorepo.}
+      \resumeItem{Implemented backend-managed model credentials, Supabase auth, private R2/S3 storage, Stripe billing, workflow packs, CI checks, assistant drafting, tabular review, workflows, and document editing.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Limes Axis}{2026}
+    {Auditable Agent / Workflow Infrastructure}{\href{https://github.com/Limes-Labs/limes-axis}{github.com/Limes-Labs/limes-axis}}
+    \resumeItemListStart
+      \resumeItem{Built a self-hostable enterprise AI control plane for typed, permissioned, auditable human/agent workflows across operational data, approvals, connectors, and model routing.}
+      \resumeItem{Implemented FastAPI/Postgres/TypeDB/Temporal/Next.js architecture with OIDC actor binding, permission scopes, append-only audit evidence, OpenAPI checks, integration tests, and local Docker runtime.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Experience \& Leadership}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Founder \& Content Lead}{Mar. 2020 -- Present}
+    {Francesco Tech / Personal Brand}{Italy}
+    \resumeItemListStart
+      \resumeItem{Built Italian tech media channels across Instagram and TikTok to 70,000+ total followers, generating 4M+ views and 2.5M+ likes through short-form content on technology, AI, gaming, and innovation.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Volunteer}{2016 -- Present}
+    {ENSA, Ente Nazionale Salvaguardia Ambiente}{Italy}
+    \resumeItemListStart
+      \resumeItem{Participated in environmental, civil-protection, civil-service, and social-solidarity initiatives; organized ``Babbo Natale in Corsia,'' delivering gifts to children in a pediatric ward.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Volunteer}{2015 -- Present}
+    {ASS.A.P.L.I., Associazione Appartenenti Polizia Locale Italiana}{Italy}
+    \resumeItemListStart
+      \resumeItem{Supported road-safety and public-awareness campaigns, including educational activities on safe driving practices, civic responsibility, and community safety.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Hackathon Participant}{2024}
+    {Codemotion \& Poligrafico Italiano}{Italy}
+    \resumeItemListStart
+      \resumeItem{Built an MVP virtual assistant concept for AI-assisted anti-counterfeiting and Made in Italy supply-chain data tracing.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in,label={}]
+  \small{\item{
+    \textbf{Languages}{: TypeScript, Python, JavaScript, Swift, SQL, Solidity, Rust basics, HTML/CSS} \\
+    \textbf{Frontend}{: React, Next.js, Tailwind CSS, Expo, React Native, Electron} \\
+    \textbf{Backend / Data}{: Node.js, Express, FastAPI, Supabase, PostgreSQL, REST APIs, Cloudflare R2, Stripe} \\
+    \textbf{AI / ML}{: LLM agents, RAG, evaluation, RL experiments, PyTorch basics, verifier workflows, reproducible artifacts} \\
+    \textbf{Tools}{: Git, Docker, Linux, GitHub Actions, Playwright, LaTeX, Vercel, Cloudflare, JSON/CLI tooling}
+  }}
+\end{itemize}
+\vspace{-8pt}
+
+\section{Awards \& Languages}
+\begin{itemize}[leftmargin=0.15in,itemsep=0.4pt,topsep=0.5pt]
+  \resumeItem{\textbf{OII Italian Olympiad in Informatics:} participant.}
+  \resumeItem{\textbf{Languages:} Italian native; English intermediate; French basic; Spanish basic.}
+\end{itemize}
+
+\end{document}

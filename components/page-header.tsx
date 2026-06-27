@@ -46,7 +46,7 @@ export function PageHeader() {
       </h1>
 
       <p className="mt-3 text-[15px] text-[var(--muted)] sm:text-[16px]">
-        {profile.role} at {profile.university}.
+        {profile.headline}.
       </p>
 
       <Properties />

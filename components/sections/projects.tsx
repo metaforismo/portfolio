@@ -1,41 +1,70 @@
 import Link from "next/link";
-import { ArrowUpRight, Github, Star } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
-import { projects, type Project } from "@/lib/data";
+import {
+  selectedWorkTiers,
+  type AccentColor,
+  type SelectedWorkItem,
+} from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-const STATUS_COLORS: Record<Project["status"], { dot: string; label: string; text: string }> = {
-  shipped: { dot: "bg-[var(--callout-green-text)]", label: "Shipped", text: "text-[var(--callout-green-text)]" },
-  wip: { dot: "bg-[var(--callout-yellow-text)]", label: "In progress", text: "text-[var(--callout-yellow-text)]" },
-  research: { dot: "bg-[var(--callout-purple-text)]", label: "Research", text: "text-[var(--callout-purple-text)]" },
-};
+const totalWorkItems = selectedWorkTiers.reduce(
+  (count, tier) => count + tier.items.length,
+  0,
+);
 
 export function Projects() {
   return (
     <section id="projects" className="scroll-mt-8">
-      <SectionHeading
-        emoji="🚀"
-        hint={`${projects.length} of 12 repos`}
-      >
+      <SectionHeading hint={`${totalWorkItems} curated works`}>
         Selected work
       </SectionHeading>
 
-      <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectPageCard key={project.slug} project={project} />
+      <p className="mt-3 max-w-[64ch] text-[14px] leading-[1.7] text-[var(--text-soft)]">
+        A compact index of the work that best explains my current direction:
+        products with real surfaces, research artifacts with public evidence,
+        and agent infrastructure built around verification.
+      </p>
+
+      <div className="mt-6 space-y-7">
+        {selectedWorkTiers.map((tier) => (
+          <section
+            key={tier.title}
+            aria-labelledby={`work-tier-${slugify(tier.title)}`}
+            className="grid gap-3 sm:grid-cols-[142px_1fr]"
+          >
+            <div className="sm:pt-2">
+              <h3
+                id={`work-tier-${slugify(tier.title)}`}
+                className="text-[13px] font-semibold text-[var(--text)]"
+              >
+                {tier.title}
+              </h3>
+              <p className="mt-1.5 text-[12px] leading-[1.55] text-[var(--muted)]">
+                {tier.description}
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              {tier.items.map((item) => (
+                <WorkItem key={item.title} item={item} />
+              ))}
+            </div>
+          </section>
         ))}
       </div>
 
-      <p className="mt-4 text-[13px] text-[var(--muted)]">
-        More on{" "}
+      <p className="mt-5 text-[13px] text-[var(--muted)]">
+        Secondary archive: Scriba, Aurion, Bite, OpenAlphaEvolve, GPT-2 from
+        scratch, Stable Diffusion from scratch, and other experiments live on{" "}
         <Link
           href="https://github.com/metaforismo"
           target="_blank"
           rel="noopener"
           className="text-[var(--text)] link-underline hover:text-[var(--accent-yellow)]"
         >
-          github.com/metaforismo
+          GitHub
         </Link>
         .
       </p>
@@ -43,118 +72,124 @@ export function Projects() {
   );
 }
 
-function ProjectPageCard({ project }: { project: Project }) {
-  const accent = project.accent ?? "gray";
-  const statusStyle = STATUS_COLORS[project.status];
+function WorkItem({ item }: { item: SelectedWorkItem }) {
+  const accentStyles = getAccentStyles(item.accent);
 
   return (
-    <Link
-      href={project.href}
-      target="_blank"
-      rel="noopener"
-      aria-label={`${project.title}, view on GitHub`}
+    <article
       className={cn(
-        "group flex flex-col overflow-hidden rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] transition-all hover:bg-[var(--bg-hover)] hover:border-[var(--muted-soft)]",
+        "group relative overflow-hidden rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] transition-colors hover:border-[var(--muted-soft)] hover:bg-[var(--bg-hover)]",
+        item.featured ? "p-4" : "p-3",
       )}
     >
       <div
         aria-hidden
-        className="h-16 w-full border-b border-[var(--border-line)]"
-        style={{
-          background: `linear-gradient(135deg, var(--callout-${accent}-bg) 0%, var(--bg-soft) 100%)`,
-        }}
-      >
-        <div className="relative h-full w-full overflow-hidden">
-          <span
-            className="absolute -bottom-3 left-4 grid h-12 w-12 place-items-center rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] text-[24px] shadow-sm transition-transform group-hover:-translate-y-0.5"
-            aria-hidden
-          >
-            {project.emoji}
-          </span>
-        </div>
-      </div>
+        className={cn(
+          "absolute inset-y-0 left-0 w-[3px] opacity-80 transition-opacity group-hover:opacity-100",
+          item.featured ? "block" : "hidden sm:block",
+        )}
+        style={{ background: accentStyles.text }}
+      />
 
-      <div className="flex flex-1 flex-col p-4 pt-7">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-[16px] font-semibold text-[var(--text)]">
-            {project.title}
-          </h3>
-          <ArrowUpRight
-            className="h-3.5 w-3.5 shrink-0 text-[var(--muted)] transition-all group-hover:text-[var(--accent-yellow)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            strokeWidth={1.75}
-          />
-        </div>
-
-        <p className="mt-1.5 text-[13px] leading-[1.5] text-[var(--text-soft)]">
-          {project.blurb}
-        </p>
-
-        {/* Notion property rows */}
-        <dl className="mt-4 space-y-1 text-[12px]">
-          <PropRow label="Category">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
             <span
-              className="inline-flex items-center rounded-sm px-1.5 py-0.5 text-[11px] font-medium"
+              className="rounded-sm border px-1.5 py-0.5 font-mono text-[10px] uppercase leading-none"
               style={{
-                background: `var(--callout-${accent}-bg)`,
-                color: `var(--callout-${accent}-text)`,
+                background: accentStyles.bg,
+                borderColor: accentStyles.border,
+                color: accentStyles.text,
               }}
             >
-              {project.category}
+              {item.eyebrow}
             </span>
-          </PropRow>
-
-          <PropRow label="Status">
-            <span className={cn("inline-flex items-center gap-1.5", statusStyle.text)}>
-              <span className={cn("h-1.5 w-1.5 rounded-full", statusStyle.dot)} />
-              {statusStyle.label}
+            <span className="font-mono text-[11px] text-[var(--muted)]">
+              {item.year}
             </span>
-          </PropRow>
+          </div>
 
-          <PropRow label="Year">
-            <span className="font-mono text-[var(--text-soft)]">{project.year}</span>
-          </PropRow>
+          <h3
+            className={cn(
+              "mt-2 font-semibold leading-tight text-[var(--text)]",
+              item.featured ? "text-[18px]" : "text-[15px]",
+            )}
+          >
+            {item.title}
+          </h3>
 
-          {typeof project.stars === "number" && (
-            <PropRow label="Stars">
-              <span className="inline-flex items-center gap-1 text-[var(--text-soft)]">
-                <Star className="h-3 w-3 fill-[var(--accent-yellow)] text-[var(--accent-yellow)]" />
-                <span className="font-mono">{project.stars}</span>
-              </span>
-            </PropRow>
+          <p
+            className={cn(
+              "mt-1.5 text-pretty leading-[1.58] text-[var(--text-soft)]",
+              item.featured ? "text-[14px]" : "text-[13px]",
+            )}
+          >
+            {item.summary}
+          </p>
+
+          {item.detail && (
+            <p className="mt-2 rounded-sm bg-[var(--bg-elevated)] px-2 py-1.5 font-mono text-[11px] leading-[1.55] text-[var(--muted)]">
+              {item.detail}
+            </p>
           )}
-        </dl>
-
-        <div className="mt-3 flex flex-wrap gap-1">
-          {project.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-sm bg-[var(--bg-elevated)] px-1.5 py-0.5 text-[11px] font-mono text-[var(--text-soft)]"
-            >
-              {s}
-            </span>
-          ))}
         </div>
 
-        <div className="mt-3 flex items-center gap-1 border-t border-[var(--divider)] pt-3 font-mono text-[11px] text-[var(--muted)]">
-          <Github className="h-3 w-3" strokeWidth={2} />
-          metaforismo/{project.slug}
-        </div>
+        <LinkCluster item={item} />
       </div>
-    </Link>
+
+      <ul className="mt-3 flex flex-wrap gap-1">
+        {item.tags.map((tag) => (
+          <li
+            key={tag}
+            className="rounded-sm bg-[var(--bg-elevated)] px-1.5 py-0.5 text-[11px] font-mono text-[var(--text-soft)]"
+          >
+            {tag}
+          </li>
+        ))}
+      </ul>
+    </article>
   );
 }
 
-function PropRow({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function LinkCluster({ item }: { item: SelectedWorkItem }) {
+  const primaryLink = item.links[0];
+
   return (
-    <div className="grid grid-cols-[64px_1fr] items-center gap-2">
-      <span className="text-[var(--muted)]">{label}</span>
-      <span className="min-w-0">{children}</span>
+    <div className="flex shrink-0 flex-wrap items-center gap-1 sm:justify-end">
+      {item.links.map((link, index) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noopener"
+          aria-label={`${item.title}: ${link.label}`}
+          className={cn(
+            "inline-flex h-8 items-center gap-1 rounded-md border px-2.5 text-[12px] transition-colors",
+            index === 0
+              ? "border-[var(--border-line)] bg-[var(--bg-elevated)] text-[var(--text)] hover:border-[var(--muted-soft)]"
+              : "border-transparent text-[var(--muted)] hover:bg-[var(--bg-elevated)] hover:text-[var(--text)]",
+          )}
+        >
+          <span>{link.label}</span>
+          {link.href === primaryLink.href ? (
+            <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
+          ) : (
+            <ExternalLink className="h-3 w-3" strokeWidth={1.75} aria-hidden />
+          )}
+        </Link>
+      ))}
     </div>
   );
+}
+
+function getAccentStyles(accent: AccentColor) {
+  return {
+    bg: `var(--callout-${accent}-bg)`,
+    border: `var(--callout-${accent}-border)`,
+    text: `var(--callout-${accent}-text)`,
+  };
+}
+
+function slugify(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }

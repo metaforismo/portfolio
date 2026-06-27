@@ -1,14 +1,9 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Blocks,
-  Bot,
   Brain,
-  Cpu,
-  Gamepad2,
   Layers,
-  NotebookPen,
   Smartphone,
-  Telescope,
 } from "lucide-react";
 
 /** Francesco was born on 1 February 2006 (Italy). Used by the live age counter. */
@@ -18,17 +13,20 @@ export const profile = {
   name: "Francesco Giannicola",
   handle: "@metaforismo",
   role: "Computer Science & AI Student",
+  headline:
+    "Founder of Limes Labs · Computer Science & AI student at Università della Calabria",
   university: "Università della Calabria",
   location: "Cosenza, Italy",
   email: "francescogiannicola1@gmail.com",
   avatar: "/images/inazuma.png",
   cv: "/cv.pdf",
   bio: [
-    "Computer Science & AI student at the University of Calabria, building things at the intersection of robotics, blockchain, and machine learning.",
-    "I like ambitious ideas. A real-life TARS, AlphaEvolve from scratch, an open rebuild of a SOTA agent: I take them apart, rebuild them, and learn what they're actually made of.",
+    "Founder of Limes Labs and Computer Science & AI student at the University of Calabria, building products, research artifacts, and open-source AI systems.",
+    "I like ambitious ideas: legal AI workspaces, evidence-gated agent workflows, benchmark infrastructure, robotics, and small research loops that turn claims into artifacts.",
   ],
   about: [
     "I'm a self-taught engineer with a soft spot for systems that look impossible at first sight. Most of what I know I learned by reverse-engineering papers, breaking SDKs apart, and shipping side projects until something clicks.",
+    "My current work sits between product and research: Jurevo as a legal AI workspace, Limes Labs as a public research umbrella, and agent infrastructure that makes AI work inspectable instead of just impressive.",
     "Outside of code: Christopher Nolan (especially Interstellar), space exploration, football, and the timeless story of DragonBall. Different inputs, same loop. Patterns and structure everywhere.",
     "I run on organisation and precision. I'd rather ship one thing properly than three half-baked ones.",
   ],
@@ -86,116 +84,166 @@ export const services: Service[] = [
   },
 ];
 
-export type ProjectStatus = "shipped" | "wip" | "research";
+export type AccentColor = "yellow" | "blue" | "green" | "purple" | "orange" | "red" | "gray";
 
-export type Project = {
-  slug: string;
-  emoji: string;
-  title: string;
-  category: string;
-  blurb: string;
-  metrics: string[];
-  stack: string[];
+export type WorkLink = {
+  label: string;
   href: string;
-  stars?: number;
-  icon: LucideIcon;
-  accent?: "yellow" | "blue" | "green" | "purple" | "orange" | "red" | "gray";
-  status: ProjectStatus;
-  year: string;
-  large?: boolean;
 };
 
-export const projects: Project[] = [
+export type SelectedWorkItem = {
+  title: string;
+  eyebrow: string;
+  summary: string;
+  detail?: string;
+  tags: string[];
+  year: string;
+  accent: AccentColor;
+  links: WorkLink[];
+  featured?: boolean;
+};
+
+export type SelectedWorkTier = {
+  title: string;
+  description: string;
+  items: SelectedWorkItem[];
+};
+
+export const selectedWorkTiers: SelectedWorkTier[] = [
   {
-    slug: "TarsGPT",
-    emoji: "🤖",
-    title: "TarsGPT",
-    category: "Robotics × LLM",
-    blurb:
-      "A real-life TARS from Interstellar — replicating most of the robot's behaviour with ChatGPT and Whisper for natural language, voice and motion.",
-    metrics: ["Realtime voice", "Vision + motion", "Most-starred repo"],
-    stack: ["Python", "OpenAI", "Whisper", "Computer Vision"],
-    href: "https://github.com/metaforismo/TarsGPT",
-    stars: 15,
-    icon: Bot,
-    accent: "blue",
-    status: "shipped",
-    year: "2025",
+    title: "Products",
+    description: "Live or product-shaped systems where the work has a real user and business surface.",
+    items: [
+      {
+        title: "Jurevo",
+        eyebrow: "AI legal workspace",
+        summary:
+          "AI legal workspace for Italian legal professionals, combining a public site, authenticated web app, backend API, mobile app, billing, storage, and versioned workflow packs.",
+        detail: "Flagship product. The strongest proof that the research and engineering loop can become a usable SaaS surface.",
+        tags: ["Product", "TypeScript", "SaaS", "Legal AI"],
+        year: "2026",
+        accent: "yellow",
+        featured: true,
+        links: [
+          { label: "Website", href: "https://jurevo.it/" },
+          { label: "GitHub", href: "https://github.com/metaforismo/Jurevo" },
+        ],
+      },
+      {
+        title: "Limes Labs",
+        eyebrow: "Founder · research umbrella",
+        summary:
+          "Public research lab for European AI systems, benchmarks, orchestration, model cards, compute-access notes, and reproducible research artifacts.",
+        detail: "The umbrella that connects the papers, benchmark infrastructure, agent tooling, and governance work.",
+        tags: ["Founder", "Research", "European AI"],
+        year: "2026",
+        accent: "green",
+        featured: true,
+        links: [{ label: "Organization", href: "https://github.com/Limes-Labs" }],
+      },
+    ],
   },
   {
-    slug: "OpenAlphaEvolve",
-    emoji: "🧬",
-    title: "OpenAlphaEvolve",
-    category: "AI · Evolution",
-    blurb:
-      "DeepMind's AlphaEvolve, open-source and from scratch. LLM-driven evolutionary search that discovers and refines better algorithms.",
-    metrics: ["From scratch", "LLM × evolution", "Research-grade"],
-    stack: ["Python", "LLMs", "Genetic algorithms"],
-    href: "https://github.com/metaforismo/OpenAlphaEvolve",
-    icon: Telescope,
-    accent: "purple",
-    status: "research",
-    year: "2025",
+    title: "Research artifacts",
+    description: "Source-backed work where the important output is an argument, a release, or a reproducible artifact.",
+    items: [
+      {
+        title: "The Broadcast Ceiling",
+        eyebrow: "Paper · RL credit assignment",
+        summary:
+          "Limes Labs paper on information and reliability limits of advantage estimators in long-horizon RL, released with source, PDF, GitHub archive, and Zenodo DOI.",
+        detail: "DOI 10.5281/zenodo.20970205",
+        tags: ["Paper", "RL", "LaTeX", "Zenodo"],
+        year: "2026",
+        accent: "blue",
+        featured: true,
+        links: [
+          { label: "Release", href: "https://github.com/Limes-Labs/the-broadcast-ceiling/releases/tag/v0.1.0" },
+          { label: "DOI", href: "https://zenodo.org/records/20970205" },
+          { label: "Repo", href: "https://github.com/Limes-Labs/the-broadcast-ceiling" },
+        ],
+      },
+      {
+        title: "Limes Axis",
+        eyebrow: "Sovereign AI platform",
+        summary:
+          "Open-source control plane for European operations: typed workflows, permissions, audit trails, model egress boundaries, approvals, and governed agent actions.",
+        tags: ["Platform", "Governance", "AI operations"],
+        year: "2026",
+        accent: "orange",
+        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/limes-axis" }],
+      },
+      {
+        title: "Learning Signal Density",
+        eyebrow: "Research workstream",
+        summary:
+          "Controlled causal-domain audit studying how much useful learning signal can be extracted from each external observation through selection, transformation, replay, feedback, and internal compute.",
+        tags: ["Research", "Efficiency", "Python"],
+        year: "2026",
+        accent: "green",
+        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/learning-signal-density" }],
+      },
+      {
+        title: "Limen",
+        eyebrow: "Routing and orchestration",
+        summary:
+          "Open orchestration primitives for routing tasks across models, roles, workflows, LoRA adapters, and verifier-style execution loops.",
+        tags: ["Python", "Routing", "Agents"],
+        year: "2026",
+        accent: "purple",
+        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/limen" }],
+      },
+    ],
   },
   {
-    slug: "Apex2",
-    emoji: "🧠",
-    title: "Apex2",
-    category: "AI Agents",
-    blurb:
-      "Open rebuild of Apex2, the SOTA agent on Terminal-Bench. Tool use, planning, and recovery from failing terminal commands.",
-    metrics: ["SOTA Terminal-Bench", "Tool-using agent", "Open rebuild"],
-    stack: ["Python", "LLMs", "Tool calling"],
-    href: "https://github.com/metaforismo/Apex2",
-    icon: Cpu,
-    accent: "yellow",
-    status: "wip",
-    year: "2025",
-  },
-  {
-    slug: "aurion",
-    emoji: "🌍",
-    title: "Aurion",
-    category: "Full-Stack · Strategy",
-    blurb:
-      "A real-time, pausable grand-strategy game: lead a small nation to global power through research, espionage, military, diplomacy and internal politics.",
-    metrics: ["Live on Vercel", "Real-time sim", "Deep systems"],
-    stack: ["TypeScript", "Next.js", "React", "Vercel"],
-    href: "https://github.com/metaforismo/aurion",
-    icon: Gamepad2,
-    accent: "green",
-    status: "wip",
-    year: "2026",
-  },
-  {
-    slug: "Ziba",
-    emoji: "🗂️",
-    title: "Ziba",
-    category: "Personal Tools",
-    blurb:
-      "An open-source second brain fusing Notion's typed databases with Obsidian's local-first markdown and graph — built as an Electron desktop app.",
-    metrics: ["Local-first", "Notion × Obsidian", "Desktop app"],
-    stack: ["TypeScript", "Electron", "Markdown"],
-    href: "https://github.com/metaforismo/Ziba",
-    icon: NotebookPen,
-    accent: "orange",
-    status: "wip",
-    year: "2026",
-  },
-  {
-    slug: "LifeGrid",
-    emoji: "🟩",
-    title: "LifeGrid",
-    category: "iOS · SwiftUI",
-    blurb:
-      "A private, local-only habit & goal tracker for iOS with a GitHub-style contribution heatmap. Your streaks, never leaving the device.",
-    metrics: ["Local-only", "Contribution heatmap", "SwiftUI"],
-    stack: ["Swift", "SwiftUI", "iOS"],
-    href: "https://github.com/metaforismo/LifeGrid",
-    icon: Smartphone,
-    accent: "red",
-    status: "wip",
-    year: "2026",
+    title: "Agent and open-source systems",
+    description: "Libraries and tools for making AI systems observable, verifiable, and easier to operate.",
+    items: [
+      {
+        title: "TarsGPT",
+        eyebrow: "Open-source robot runtime",
+        summary:
+          "Self-contained TARS-inspired robot runtime with voice, movement, dashboard, long-term memory, vision, skills, and bilingual build documentation.",
+        tags: ["Python", "Robotics", "OpenAI"],
+        year: "2025",
+        accent: "blue",
+        featured: true,
+        links: [
+          { label: "Website", href: "https://tars-gpt.vercel.app" },
+          { label: "GitHub", href: "https://github.com/metaforismo/TarsGPT" },
+        ],
+      },
+      {
+        title: "TracePilot",
+        eyebrow: "Reliability studio for computer-use agents",
+        summary:
+          "Product and eval harness for browser and desktop agents: traces, replay, verifiers, recovery policies, and reliability metrics.",
+        tags: ["TypeScript", "Agents", "Evals"],
+        year: "2026",
+        accent: "gray",
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/tracepilot" }],
+      },
+      {
+        title: "VO Agent",
+        eyebrow: "Evidence-gated agent workflows",
+        summary:
+          "Python library for coordinating agent workflows where claims advance only after command or Python verifiers produce evidence.",
+        tags: ["Python", "Verification", "Workflows"],
+        year: "2026",
+        accent: "green",
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/vo-agent" }],
+      },
+      {
+        title: "Benchforge",
+        eyebrow: "Benchmark challenge factory",
+        summary:
+          "Local-first factory for benchmark arenas with challenge-specific CLIs, submission bundles, verifier receipts, and hosted leaderboard exports.",
+        tags: ["JavaScript", "Benchmarks", "Verifiers"],
+        year: "2026",
+        accent: "yellow",
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/benchforge" }],
+      },
+    ],
   },
 ];
 
@@ -317,7 +365,7 @@ export const navAnchors = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
-  { id: "projects", label: "Projects" },
+  { id: "projects", label: "Work" },
   { id: "skills", label: "Skills" },
   { id: "github", label: "GitHub" },
   { id: "experience", label: "Experience" },
