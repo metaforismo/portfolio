@@ -36,20 +36,20 @@
   \vspace{-7pt}\scshape\raggedright\large
 }{}{0em}{}[\titlerule \vspace{-6pt}]
 
-\setlist[itemize]{leftmargin=0.16in,itemsep=1pt,topsep=1.5pt,parsep=0pt,partopsep=0pt}
+\setlist[itemize]{leftmargin=0.16in,itemsep=1pt,topsep=1.5pt,parsep=0pt,partopsep=0pt,label=\textbullet}
 \newcommand{\resumeItem}[1]{\item\small{#1}}
 \newcommand{\resumeSubheading}[4]{
   \vspace{-1pt}\item
   \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
     \textbf{#1} & #2 \\
     \textit{\small #3} & \textit{\small #4} \\
-  \end{tabular*}\vspace{-6pt}
+  \end{tabular*}\vspace{-2pt}
 }
 \newcommand{\resumeProjectHeading}[2]{
   \vspace{-1pt}\item
   \begin{tabular*}{0.99\textwidth}{l@{\extracolsep{\fill}}r}
     \small\textbf{#1} & \small #2 \\
-  \end{tabular*}\vspace{-6pt}
+  \end{tabular*}\vspace{-2pt}
 }
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in,label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
@@ -81,27 +81,46 @@
 \section{Projects \& Research}
 \resumeSubHeadingListStart
   \resumeSubheading
-    {The Broadcast Ceiling / Learning Signal Density}{2026}
-    {Research Artifacts, Limes Labs}{\href{https://zenodo.org/records/20970205}{DOI: 10.5281/zenodo.20970205}}
-    \resumeItemListStart
-      \resumeItem{Developed a reproducible long-horizon RL credit-assignment artifact with finite-MDP audits, estimator-fidelity diagnostics, exact-gradient experiments, sequence-policy audits, unit tests, smoke checks, and a 32-page LaTeX paper.}
-      \resumeItem{Published v0.1.0 with GitHub release assets, SHA-256 manifest, reproducibility commands, 51 passing tests, and Zenodo DOI; built Learning Signal Density to audit sample efficiency with frozen splits and costed artifacts.}
-    \resumeItemListEnd
-
-  \resumeSubheading
     {Jurevo}{2026 -- Present}
     {Full-Stack AI Legal Workspace}{\href{https://jurevo.it}{jurevo.it}}
     \resumeItemListStart
-      \resumeItem{Built an AI legal workspace for Italian law firms, combining authenticated web app, backend API, native Expo mobile app, document workflows, billing, storage, and LLM provider routing in a TypeScript monorepo.}
-      \resumeItem{Implemented backend-managed model credentials, Supabase auth, private R2/S3 storage, Stripe billing, workflow packs, CI checks, assistant drafting, tabular review, workflows, and document editing.}
+      \resumeItem{Founded and built an AI legal workspace for Italian law firms end to end: authenticated web app, backend API, native Expo mobile app, document workflows, billing, and storage in a single TypeScript monorepo.}
+      \resumeItem{Owned the system from zero to one in production, including backend-managed model credentials, Supabase auth, private R2/S3 storage, Stripe billing, workflow packs, CI checks, assistant drafting, tabular review, and document editing.}
     \resumeItemListEnd
 
   \resumeSubheading
-    {Limes Axis}{2026}
-    {Auditable Agent / Workflow Infrastructure}{\href{https://github.com/Limes-Labs/limes-axis}{github.com/Limes-Labs/limes-axis}}
+    {TracePilot}{}
+    {Reliability Studio for Computer-Use Agents}{\href{https://github.com/metaforismo/tracepilot}{github.com/metaforismo/tracepilot}}
     \resumeItemListStart
-      \resumeItem{Built a self-hostable enterprise AI control plane for typed, permissioned, auditable human/agent workflows across operational data, approvals, connectors, and model routing.}
-      \resumeItem{Implemented FastAPI/Postgres/TypeDB/Temporal/Next.js architecture with OIDC actor binding, permission scopes, append-only audit evidence, OpenAPI checks, integration tests, and local Docker runtime.}
+      \resumeItem{Built an open-source eval and reliability harness for browser agents: trace replay, step-level verification, stuck-loop detection, prompt-injection tests, OpenAI Responses and Anthropic Computer Use adapters, readiness gate, and SHA-256 evidence packs.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Limes Axis \& limen}{}
+    {Agent Infrastructure}{\href{https://github.com/Limes-Labs}{github.com/Limes-Labs}}
+    \resumeItemListStart
+      \resumeItem{Built Limes Axis, a self-hostable AI control plane for typed, permissioned, auditable human/agent workflows across operational data, approvals, connectors, and model routing; built limen as orchestration primitives for routing tasks across models, roles, workflows, and LoRA adapters.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {TarsGPT}{}
+    {Physical AI Agent}{\href{https://github.com/metaforismo/TarsGPT}{github.com/metaforismo/TarsGPT}}
+    \resumeItemListStart
+      \resumeItem{Designed and built a real-life TARS-inspired Raspberry Pi 5 robot with streaming LLM brain, tool-calling skills, balance-first gait, vision, memory recall, timers, music, home automation, and simulation mode.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {The Broadcast Ceiling / Learning Signal Density}{2026}
+    {RL Research Artifact}{\href{https://zenodo.org/records/20970205}{DOI: 10.5281/zenodo.20970205}}
+    \resumeItemListStart
+      \resumeItem{Built a reproducible long-horizon RL credit-assignment artifact with finite-MDP audits, estimator-fidelity diagnostics, exact-gradient experiments, sequence-policy audits, 51 passing tests, a 32-page LaTeX paper, Zenodo DOI, and SHA-256 manifest.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {ML Fundamentals}{}
+    {From-Scratch Implementations}{\href{https://github.com/metaforismo}{github.com/metaforismo}}
+    \resumeItemListStart
+      \resumeItem{Reimplemented GPT-2, Stable Diffusion, and an open-source AlphaEvolve from scratch to build first-principles understanding of modern model architectures and training loops.}
     \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -112,27 +131,6 @@
     {Francesco Tech / Personal Brand}{Italy}
     \resumeItemListStart
       \resumeItem{Built Italian tech media channels across Instagram and TikTok to 70,000+ total followers, generating 4M+ views and 2.5M+ likes through short-form content on technology, AI, gaming, and innovation.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {Volunteer}{2016 -- Present}
-    {ENSA, Ente Nazionale Salvaguardia Ambiente}{Italy}
-    \resumeItemListStart
-      \resumeItem{Participated in environmental, civil-protection, civil-service, and social-solidarity initiatives; organized ``Babbo Natale in Corsia,'' delivering gifts to children in a pediatric ward.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {Volunteer}{2015 -- Present}
-    {ASS.A.P.L.I., Associazione Appartenenti Polizia Locale Italiana}{Italy}
-    \resumeItemListStart
-      \resumeItem{Supported road-safety and public-awareness campaigns, including educational activities on safe driving practices, civic responsibility, and community safety.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {Hackathon Participant}{2024}
-    {Codemotion \& Poligrafico Italiano}{Italy}
-    \resumeItemListStart
-      \resumeItem{Built an MVP virtual assistant concept for AI-assisted anti-counterfeiting and Made in Italy supply-chain data tracing.}
     \resumeItemListEnd
 \resumeSubHeadingListEnd
 
