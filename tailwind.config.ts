@@ -29,6 +29,7 @@ const config: Config = {
           "sans-serif",
         ],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        paper: ["var(--font-paper)", "Georgia", "ui-serif", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CornerDownLeft, Search } from "lucide-react";
 
 import { navAnchors, type NavAnchorId } from "@/lib/data";
+import { lockScroll } from "@/lib/lock-scroll";
 import { cn } from "@/lib/utils";
 
 /**
@@ -52,11 +53,10 @@ export function CommandPalette() {
     if (!open) return;
     setQuery("");
     setActiveIndex(0);
-    const { overflow } = document.body.style;
-    document.body.style.overflow = "hidden";
+    const unlock = lockScroll();
     const id = window.setTimeout(() => inputRef.current?.focus(), 0);
     return () => {
-      document.body.style.overflow = overflow;
+      unlock();
       window.clearTimeout(id);
     };
   }, [open]);

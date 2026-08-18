@@ -6,7 +6,6 @@ import { Experience } from "@/components/sections/experience";
 import { Footer } from "@/components/sections/footer";
 import { GitHubSection } from "@/components/sections/github";
 import { Projects } from "@/components/sections/projects";
-import { Services } from "@/components/sections/services";
 import { Skills } from "@/components/sections/skills";
 import { Writing } from "@/components/sections/writing";
 import { getCachedContributions } from "@/lib/get-cached-contributions";
@@ -19,14 +18,11 @@ export default function HomePage() {
     <>
       <CopyEmailKeyboardListener />
       <CommandPalette />
-      <main className="mx-auto w-full max-w-[760px] px-5 pb-24 sm:px-8">
+      <main className="mx-auto w-full max-w-[680px] px-5 pb-24 sm:max-w-[760px] sm:px-8">
         <PageHeader />
 
         <hr className="my-10" />
         <About />
-
-        <hr className="my-10" />
-        <Services />
 
         <hr className="my-10" />
         <Projects />

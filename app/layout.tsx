@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -20,6 +20,14 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap",
   weight: ["400", "500"],
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-paper",
+  display: "swap",
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
 });
 
 const bulgaryRose = localFont({
@@ -77,7 +85,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrains.variable} ${bulgaryRose.variable}`}
+      className={`${inter.variable} ${jetbrains.variable} ${newsreader.variable} ${bulgaryRose.variable}`}
     >
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider>

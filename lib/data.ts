@@ -123,6 +123,18 @@ export type WorkLink = {
   href: string;
 };
 
+export type PaperKind =
+  | "canvas"
+  | "phone"
+  | "trace"
+  | "code"
+  | "proof"
+  | "paper"
+  | "control"
+  | "math"
+  | "legal"
+  | "robot";
+
 export type SelectedWorkItem = {
   title: string;
   eyebrow: string;
@@ -131,6 +143,11 @@ export type SelectedWorkItem = {
   tags: string[];
   year: string;
   accent: AccentColor;
+  paper: PaperKind;
+  tab: string;
+  previews?: string[];
+  previewFit?: "cover" | "contain";
+  paperShape?: "portrait" | "landscape";
   links: WorkLink[];
   featured?: boolean;
 };
@@ -156,7 +173,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["TypeScript", "React", "Expo", "SwiftUI", "MCP"],
         year: "2026",
         accent: "yellow",
+        paper: "canvas",
+        tab: "IntentForm",
+        paperShape: "landscape",
         featured: true,
+        previews: [
+          "/work/intentform/1.jpg",
+          "/work/intentform/2.jpg",
+          "/work/intentform/3.jpg",
+          "/work/intentform/4.jpg",
+          "/work/intentform/5.jpg",
+        ],
         links: [
           { label: "Demo", href: "https://intentform-amber.vercel.app" },
           { label: "GitHub", href: "https://github.com/metaforismo/IntentForm" },
@@ -170,7 +197,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Swift", "SwiftUI", "HealthKit", "Cloudflare"],
         year: "2026",
         accent: "green",
+        paper: "phone",
+        tab: "Bite",
+        paperShape: "portrait",
         featured: true,
+        previews: [
+          "/work/bite/1.jpg",
+          "/work/bite/2.jpg",
+          "/work/bite/3.jpg",
+          "/work/bite/4.jpg",
+          "/work/bite/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/Bite" }],
       },
       {
@@ -181,6 +218,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Product", "TypeScript", "SaaS"],
         year: "2026",
         accent: "orange",
+        paper: "legal",
+        tab: "Jurevo",
+        paperShape: "landscape",
+        featured: true,
+        previews: [
+          "/work/jurevo/1.jpg",
+          "/work/jurevo/2.jpg",
+          "/work/jurevo/3.jpg",
+          "/work/jurevo/4.jpg",
+          "/work/jurevo/5.jpg",
+        ],
         links: [
           { label: "Website", href: "https://jurevo.it/" },
           { label: "OSS", href: "https://github.com/metaforismo/ossjurevo" },
@@ -200,7 +248,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["TypeScript", "Playwright", "Evals", "Agents"],
         year: "2026",
         accent: "gray",
+        paper: "trace",
+        tab: "TracePilot",
+        paperShape: "landscape",
         featured: true,
+        previews: [
+          "/work/tracepilot/1.jpg",
+          "/work/tracepilot/2.jpg",
+          "/work/tracepilot/3.jpg",
+          "/work/tracepilot/4.jpg",
+          "/work/tracepilot/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/tracepilot" }],
       },
       {
@@ -213,7 +271,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Open Source", "TypeScript", "Swift", "Agents"],
         year: "2026",
         accent: "orange",
+        paper: "code",
+        tab: "OpenClaw",
+        paperShape: "landscape",
         featured: true,
+        previews: [
+          "/work/openclaw/1.jpg",
+          "/work/openclaw/2.jpg",
+          "/work/openclaw/3.jpg",
+          "/work/openclaw/4.jpg",
+          "/work/openclaw/5.jpg",
+        ],
         links: [
           {
             label: "Contributions",
@@ -229,6 +297,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Swift", "SwiftUI", "Agents", "iOS"],
         year: "2026",
         accent: "blue",
+        paper: "phone",
+        tab: "AgentKeys",
+        paperShape: "portrait",
+        featured: true,
+        previews: [
+          "/work/agentkeys/1.jpg",
+          "/work/agentkeys/2.jpg",
+          "/work/agentkeys/3.jpg",
+          "/work/agentkeys/4.jpg",
+          "/work/agentkeys/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/AgentKeys" }],
       },
       {
@@ -239,17 +318,18 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["TypeScript", "iOS", "Observability"],
         year: "2026",
         accent: "purple",
+        paper: "trace",
+        tab: "Atlas Loop",
+        paperShape: "landscape",
+        featured: true,
+        previews: [
+          "/work/atlas/1.jpg",
+          "/work/atlas/2.jpg",
+          "/work/atlas/3.jpg",
+          "/work/atlas/4.jpg",
+          "/work/atlas/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/atlas-loop" }],
-      },
-      {
-        title: "Benchforge",
-        eyebrow: "Benchmark challenge factory",
-        summary:
-          "Local-first factory for benchmark arenas: challenge-specific CLIs, independent verification, submission bundles, verifier receipts, and hosted leaderboard exports.",
-        tags: ["JavaScript", "Benchmarks", "Verifiers"],
-        year: "2026",
-        accent: "yellow",
-        links: [{ label: "GitHub", href: "https://github.com/metaforismo/benchforge" }],
       },
     ],
   },
@@ -265,7 +345,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["C++", "SMT", "Z3", "CMake"],
         year: "2026",
         accent: "purple",
+        paper: "proof",
+        tab: "Sigil",
+        paperShape: "landscape",
         featured: true,
+        previews: [
+          "/work/sigil/1.jpg",
+          "/work/sigil/2.jpg",
+          "/work/sigil/3.jpg",
+          "/work/sigil/4.jpg",
+          "/work/sigil/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/sigil-lang" }],
       },
       {
@@ -277,7 +367,18 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Paper", "RL", "Python", "Zenodo"],
         year: "2026",
         accent: "blue",
+        paper: "paper",
+        tab: "Broadcast",
+        paperShape: "portrait",
         featured: true,
+        previewFit: "contain",
+        previews: [
+          "/work/broadcast/1.jpg",
+          "/work/broadcast/2.jpg",
+          "/work/broadcast/3.jpg",
+          "/work/broadcast/4.jpg",
+          "/work/broadcast/5.jpg",
+        ],
         links: [
           { label: "DOI", href: "https://zenodo.org/records/20970205" },
           {
@@ -295,6 +396,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Python", "Governance", "AI operations"],
         year: "2026",
         accent: "orange",
+        paper: "control",
+        tab: "Axis",
+        paperShape: "landscape",
+        featured: true,
+        previews: [
+          "/work/axis/1.jpg",
+          "/work/axis/2.jpg",
+          "/work/axis/3.jpg",
+          "/work/axis/4.jpg",
+          "/work/axis/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/limes-axis" }],
       },
       {
@@ -305,6 +417,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Python", "SageMath", "Magma", "Math"],
         year: "2026",
         accent: "green",
+        paper: "math",
+        tab: "Rank ≥ 30",
+        paperShape: "landscape",
+        featured: true,
+        previews: [
+          "/work/elliptic/1.jpg",
+          "/work/elliptic/2.jpg",
+          "/work/elliptic/3.jpg",
+          "/work/elliptic/4.jpg",
+          "/work/elliptic/5.jpg",
+        ],
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/elliptic-rank-30" }],
       },
       {
@@ -315,6 +438,17 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
         tags: ["Python", "Robotics", "Open source"],
         year: "2025",
         accent: "blue",
+        paper: "robot",
+        tab: "TarsGPT",
+        paperShape: "landscape",
+        featured: true,
+        previews: [
+          "/work/tars/1.jpg",
+          "/work/tars/2.jpg",
+          "/work/tars/3.jpg",
+          "/work/tars/4.jpg",
+          "/work/tars/5.jpg",
+        ],
         links: [
           { label: "Website", href: "https://tars-gpt.vercel.app" },
           { label: "GitHub", href: "https://github.com/metaforismo/TarsGPT" },
@@ -324,7 +458,12 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
   },
 ];
 
+export const featuredWork = selectedWorkTiers.flatMap((tier) => tier.items);
+
+export const moreWork: SelectedWorkItem[] = [];
+
 export const archiveProjects = [
+  { title: "Benchforge", href: "https://github.com/metaforismo/benchforge" },
   { title: "Hephaestus", href: "https://github.com/metaforismo/Hephaestus" },
   { title: "Cumea", href: "https://github.com/metaforismo/Cumea" },
   { title: "serve-droid", href: "https://github.com/metaforismo/serve-droid" },
@@ -508,7 +647,6 @@ export const publications: Publication[] = [
 export const navAnchors = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "services", label: "Services" },
   { id: "projects", label: "Work" },
   { id: "skills", label: "Skills" },
   { id: "github", label: "GitHub" },
