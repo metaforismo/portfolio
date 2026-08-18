@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
 import { SectionHeading } from "@/components/section-heading";
 import {
   certifications,
@@ -6,6 +9,8 @@ import {
 } from "@/lib/data";
 
 const KIND_EMOJI: Record<ExperienceItem["kind"], string> = {
+  founder: "🌱",
+  oss: "🧩",
   education: "🎓",
   project: "🛠️",
   work: "📣",
@@ -37,6 +42,17 @@ export function Experience() {
                 <p className="mt-1.5 text-[13px] leading-[1.6] text-[var(--text-soft)]">
                   {item.blurb}
                 </p>
+                {item.href && (
+                  <Link
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="group/link mt-2 inline-flex items-center gap-1 text-[12px] text-[var(--text)] link-underline hover:text-[var(--accent-yellow)]"
+                  >
+                    {item.hrefLabel ?? "Link"}
+                    <ArrowUpRight className="h-3 w-3 opacity-50 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" strokeWidth={1.75} />
+                  </Link>
+                )}
                 {item.highlights && (
                   <ul className="mt-2 flex flex-wrap gap-1">
                     {item.highlights.map((h) => (

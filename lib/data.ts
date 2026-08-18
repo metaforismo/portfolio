@@ -1,8 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Blocks,
   Brain,
-  Layers,
+  Cpu,
+  FlaskConical,
   Smartphone,
 } from "lucide-react";
 
@@ -12,23 +12,23 @@ export const BIRTH_DATE = { year: 2006, month: 2, day: 1 } as const;
 export const profile = {
   name: "Francesco Giannicola",
   handle: "@metaforismo",
-  role: "Computer Science & AI Student",
+  role: "Software Engineer & Builder",
   headline:
-    "Founder of Limes Labs · Computer Science & AI student at Università della Calabria",
+    "Building AI systems, developer tools, native apps, compilers & research · Founder of Limes Labs · CS & AI @ UniCal",
   university: "Università della Calabria",
   location: "Cosenza, Italy",
   email: "francescogiannicola1@gmail.com",
   avatar: "/images/inazuma.png",
   cv: "/cv.pdf",
   bio: [
-    "Founder of Limes Labs and Computer Science & AI student at the University of Calabria, building products, research artifacts, and open-source AI systems.",
-    "I like ambitious ideas: legal AI workspaces, evidence-gated agent workflows, benchmark infrastructure, robotics, and small research loops that turn claims into artifacts.",
+    "Founder of Limes Labs. I engineer across AI systems, developer tools, native software, compilers, and product — and I tend to learn by shipping and verifying.",
+    "The interesting part usually starts after the first demo works.",
   ],
   about: [
-    "I'm a self-taught engineer with a soft spot for systems that look impossible at first sight. Most of what I know I learned by reverse-engineering papers, breaking SDKs apart, and shipping side projects until something clicks.",
-    "My current work sits between product and research: Jurevo as a legal AI workspace, Limes Labs as a public research umbrella, and agent infrastructure that makes AI work inspectable instead of just impressive.",
+    "I like taking difficult ideas and turning them into working systems. Most of what I know comes from reverse-engineering papers, reading runtimes until they make sense, and shipping until the claim can be checked.",
+    "The work sits where research, systems, and product meet: agent reliability and evaluation, native control surfaces, compilers with proof obligations, and public research artifacts with evidence attached.",
+    "I tend to learn by shipping. The interesting part usually starts after the first demo works — traces, tests, verifiers, and the parts that have to survive contact with a real interface.",
     "Outside of code: Christopher Nolan (especially Interstellar), space exploration, football, and the timeless story of DragonBall. Different inputs, same loop. Patterns and structure everywhere.",
-    "I run on organisation and precision. I'd rather ship one thing properly than three half-baked ones.",
   ],
 };
 
@@ -36,14 +36,46 @@ export type SocialLink = {
   label: string;
   href: string;
   handle: string;
+  previewTitle: string;
+  previewBody: string;
 };
 
 export const socials: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/metaforismo", handle: "metaforismo" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/francescogiannicola/", handle: "francescogiannicola" },
-  { label: "X / Twitter", href: "https://x.com/fragiannicola", handle: "@fragiannicola" },
-  { label: "Instagram", href: "https://www.instagram.com/francescogiannicolaa/", handle: "@francescogiannicolaa" },
-  { label: "YouTube", href: "https://www.youtube.com/channel/UCYaWvTE2XvKI2u-9mqJysdw", handle: "channel" },
+  {
+    label: "GitHub",
+    href: "https://github.com/metaforismo",
+    handle: "metaforismo",
+    previewTitle: "metaforismo",
+    previewBody: "Public work across agents, native apps, compilers, and research.",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/francescogiannicola/",
+    handle: "francescogiannicola",
+    previewTitle: "Francesco Giannicola",
+    previewBody: "Software Engineer & Builder · Cosenza, Italy",
+  },
+  {
+    label: "X / Twitter",
+    href: "https://x.com/fragiannicola",
+    handle: "@fragiannicola",
+    previewTitle: "@fragiannicola",
+    previewBody: "Notes on building, research artifacts, and whatever I'm shipping.",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/francescogiannicolaa/",
+    handle: "@francescogiannicolaa",
+    previewTitle: "@francescogiannicolaa",
+    previewBody: "Personal brand around tech, design, and storytelling.",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UCYaWvTE2XvKI2u-9mqJysdw",
+    handle: "channel",
+    previewTitle: "YouTube",
+    previewBody: "Longer-form clips from the same builder loop.",
+  },
 ];
 
 export type Service = {
@@ -56,31 +88,31 @@ export type Service = {
 export const services: Service[] = [
   {
     icon: Brain,
-    title: "AI / ML Engineering",
+    title: "AI & Agent Systems",
     blurb:
-      "Models, agents and inference pipelines, from fine-tuning to LLM-powered products.",
-    stack: ["Python", "PyTorch", "OpenAI APIs"],
+      "Tool-using agents, evals, traces, reliability, and model integrations that can be inspected after the demo.",
+    stack: ["Evals", "Orchestration", "Providers"],
   },
   {
-    icon: Layers,
-    title: "Full-Stack Development",
+    icon: Cpu,
+    title: "Developer Tools & Systems",
     blurb:
-      "Type-safe web apps with the React and Next.js stack, deployed on Vercel.",
-    stack: ["TypeScript", "Next.js", "Tailwind"],
-  },
-  {
-    icon: Blocks,
-    title: "Blockchain & Web3",
-    blurb:
-      "Decentralised applications and smart contracts on Ethereum-compatible chains.",
-    stack: ["Solidity", "Web3.js", "Ethereum"],
+      "Compilers, verification, runtimes, CLIs, observability, and infrastructure for people who ship systems.",
+    stack: ["Compilers", "CLIs", "Runtimes"],
   },
   {
     icon: Smartphone,
-    title: "Robotics & Computer Vision",
+    title: "Native & Product Engineering",
     blurb:
-      "Real-time perception and control loops bridging hardware and ML models.",
-    stack: ["YOLO", "OpenCV", "ROS"],
+      "End-to-end product systems across Swift/SwiftUI, Expo, React, and Next.js — from interface to backend.",
+    stack: ["SwiftUI", "Expo", "Next.js"],
+  },
+  {
+    icon: FlaskConical,
+    title: "Research & Verification",
+    blurb:
+      "Reproducible experiments, benchmarks, evidence pipelines, and formal checks instead of vibes.",
+    stack: ["SMT", "Benchmarks", "Artifacts"],
   },
 ];
 
@@ -111,133 +143,109 @@ export type SelectedWorkTier = {
 
 export const selectedWorkTiers: SelectedWorkTier[] = [
   {
-    title: "Products",
-    description: "Live or product-shaped systems where the work has a real user and business surface.",
+    title: "Products & interfaces",
+    description: "Product-shaped systems with a real interface, user, or compilation target.",
     items: [
       {
-        title: "Jurevo",
-        eyebrow: "AI legal workspace",
+        title: "IntentForm",
+        eyebrow: "Local-first design environment",
         summary:
-          "AI legal workspace for Italian legal professionals, combining a public site, authenticated web app, backend API, mobile app, billing, storage, and versioned workflow packs.",
-        detail: "Flagship product. The strongest proof that the research and engineering loop can become a usable SaaS surface.",
-        tags: ["Product", "TypeScript", "SaaS", "Legal AI"],
+          "Humans and coding agents edit the same validated Semantic Interface Graph, then compile it deterministically to React, Web, Expo, and SwiftUI, with evidence bound to the current fingerprint.",
+        detail:
+          "Product + developer tooling + agents + compiler-like systems. Generated files are artifacts, not the source of truth.",
+        tags: ["TypeScript", "React", "Expo", "SwiftUI", "MCP"],
         year: "2026",
         accent: "yellow",
         featured: true,
         links: [
-          { label: "Website", href: "https://jurevo.it/" },
-          { label: "GitHub", href: "https://github.com/metaforismo/Jurevo" },
+          { label: "Demo", href: "https://intentform-amber.vercel.app" },
+          { label: "GitHub", href: "https://github.com/metaforismo/IntentForm" },
         ],
       },
       {
-        title: "Limes Labs",
-        eyebrow: "Founder · research umbrella",
+        title: "Bite",
+        eyebrow: "Native iOS health product",
         summary:
-          "Public research lab for European AI systems, benchmarks, orchestration, model cards, compute-access notes, and reproducible research artifacts.",
-        detail: "The umbrella that connects the papers, benchmark infrastructure, agent tooling, and governance work.",
-        tags: ["Founder", "Research", "European AI"],
+          "SwiftUI health coach with HealthKit, typed-tool AI workflows, long-term memory, lab-report handling, widgets, Live Activities, and a Cloudflare Worker backend.",
+        tags: ["Swift", "SwiftUI", "HealthKit", "Cloudflare"],
         year: "2026",
         accent: "green",
         featured: true,
-        links: [{ label: "Organization", href: "https://github.com/Limes-Labs" }],
-      },
-    ],
-  },
-  {
-    title: "Research artifacts",
-    description: "Source-backed work where the important output is an argument, a release, or a reproducible artifact.",
-    items: [
-      {
-        title: "The Broadcast Ceiling",
-        eyebrow: "Paper · RL credit assignment",
-        summary:
-          "Limes Labs paper on information and reliability limits of advantage estimators in long-horizon RL, released with source, PDF, GitHub archive, and Zenodo DOI.",
-        detail: "DOI 10.5281/zenodo.20970205",
-        tags: ["Paper", "RL", "LaTeX", "Zenodo"],
-        year: "2026",
-        accent: "blue",
-        featured: true,
-        links: [
-          { label: "Release", href: "https://github.com/Limes-Labs/the-broadcast-ceiling/releases/tag/v0.1.0" },
-          { label: "DOI", href: "https://zenodo.org/records/20970205" },
-          { label: "Repo", href: "https://github.com/Limes-Labs/the-broadcast-ceiling" },
-        ],
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/Bite" }],
       },
       {
-        title: "Limes Axis",
-        eyebrow: "Sovereign AI platform",
+        title: "Jurevo",
+        eyebrow: "AI legal workspace",
         summary:
-          "Open-source control plane for European operations: typed workflows, permissions, audit trails, model egress boundaries, approvals, and governed agent actions.",
-        tags: ["Platform", "Governance", "AI operations"],
+          "AI legal workspace for Italian legal professionals: public site, authenticated app, document workflows, and billing. The product repository is private; public evidence is the live site and the OSS workspace.",
+        tags: ["Product", "TypeScript", "SaaS"],
         year: "2026",
         accent: "orange",
-        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/limes-axis" }],
-      },
-      {
-        title: "Learning Signal Density",
-        eyebrow: "Research workstream",
-        summary:
-          "Controlled causal-domain audit studying how much useful learning signal can be extracted from each external observation through selection, transformation, replay, feedback, and internal compute.",
-        tags: ["Research", "Efficiency", "Python"],
-        year: "2026",
-        accent: "green",
-        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/learning-signal-density" }],
-      },
-      {
-        title: "Limen",
-        eyebrow: "Routing and orchestration",
-        summary:
-          "Open orchestration primitives for routing tasks across models, roles, workflows, LoRA adapters, and verifier-style execution loops.",
-        tags: ["Python", "Routing", "Agents"],
-        year: "2026",
-        accent: "purple",
-        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/limen" }],
+        links: [
+          { label: "Website", href: "https://jurevo.it/" },
+          { label: "OSS", href: "https://github.com/metaforismo/ossjurevo" },
+        ],
       },
     ],
   },
   {
-    title: "Agent and open-source systems",
-    description: "Libraries and tools for making AI systems observable, verifiable, and easier to operate.",
+    title: "AI & developer infrastructure",
+    description: "Tools for running, inspecting, and testing agents and developer workflows.",
     items: [
-      {
-        title: "TarsGPT",
-        eyebrow: "Open-source robot runtime",
-        summary:
-          "Self-contained TARS-inspired robot runtime with voice, movement, dashboard, long-term memory, vision, skills, and bilingual build documentation.",
-        tags: ["Python", "Robotics", "OpenAI"],
-        year: "2025",
-        accent: "blue",
-        featured: true,
-        links: [
-          { label: "Website", href: "https://tars-gpt.vercel.app" },
-          { label: "GitHub", href: "https://github.com/metaforismo/TarsGPT" },
-        ],
-      },
       {
         title: "TracePilot",
         eyebrow: "Reliability studio for computer-use agents",
         summary:
-          "Product and eval harness for browser and desktop agents: traces, replay, verifiers, recovery policies, and reliability metrics.",
-        tags: ["TypeScript", "Agents", "Evals"],
+          "Open-source product and eval harness for browser and desktop agents: traces, replay, verifiers, recovery policies, cost/readiness evidence, and provider adapters.",
+        tags: ["TypeScript", "Playwright", "Evals", "Agents"],
         year: "2026",
         accent: "gray",
+        featured: true,
         links: [{ label: "GitHub", href: "https://github.com/metaforismo/tracepilot" }],
       },
       {
-        title: "VO Agent",
-        eyebrow: "Evidence-gated agent workflows",
+        title: "OpenClaw",
+        eyebrow: "Upstream open-source contributor",
         summary:
-          "Python library for coordinating agent workflows where claims advance only after command or Python verifiers produce evidence.",
-        tags: ["Python", "Verification", "Workflows"],
+          "Contributor to the OpenClaw upstream codebase across agent runtime, Gateway, automation, native iOS, and messaging/provider integrations, with 18 merged PRs as of August 2026.",
+        detail:
+          "External engineering signal: reproducing issues, implementing fixes, building focused regression coverage, producing runtime evidence, and working through upstream review. 23 PRs opened / 18 merged upstream — not a claim of sole authorship on every line.",
+        tags: ["Open Source", "TypeScript", "Swift", "Agents"],
         year: "2026",
-        accent: "green",
-        links: [{ label: "GitHub", href: "https://github.com/metaforismo/vo-agent" }],
+        accent: "orange",
+        featured: true,
+        links: [
+          {
+            label: "Contributions",
+            href: "https://github.com/openclaw/openclaw/pulls?q=is%3Apr+author%3Ametaforismo",
+          },
+        ],
+      },
+      {
+        title: "AgentKeys",
+        eyebrow: "Native iPhone control surface",
+        summary:
+          "Open-source tactile iOS console for coding agents: structured lifecycle events, real approval states, sessions, and provider-aware capabilities. The phone is a semantic remote control, not a remote shell.",
+        tags: ["Swift", "SwiftUI", "Agents", "iOS"],
+        year: "2026",
+        accent: "blue",
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/AgentKeys" }],
+      },
+      {
+        title: "Atlas Loop",
+        eyebrow: "iOS Simulator evidence loop",
+        summary:
+          "Local-first runtime evidence and testing tooling for agents and developers operating real iOS Simulator interfaces: screenshots, traces, metrics, and inspectable handoff artifacts.",
+        tags: ["TypeScript", "iOS", "Observability"],
+        year: "2026",
+        accent: "purple",
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/atlas-loop" }],
       },
       {
         title: "Benchforge",
         eyebrow: "Benchmark challenge factory",
         summary:
-          "Local-first factory for benchmark arenas with challenge-specific CLIs, submission bundles, verifier receipts, and hosted leaderboard exports.",
+          "Local-first factory for benchmark arenas: challenge-specific CLIs, independent verification, submission bundles, verifier receipts, and hosted leaderboard exports.",
         tags: ["JavaScript", "Benchmarks", "Verifiers"],
         year: "2026",
         accent: "yellow",
@@ -245,7 +253,86 @@ export const selectedWorkTiers: SelectedWorkTier[] = [
       },
     ],
   },
+  {
+    title: "Systems & research",
+    description: "Compilers, governed platforms, publications, and certificate-first research.",
+    items: [
+      {
+        title: "Sigil",
+        eyebrow: "Experimental systems language",
+        summary:
+          "Compiler with first-class proof obligations, SMT-LIB verification, Z3, memory/ownership models, and a conditional GCC JIT native-lowering path. Research scaffold, not a production verifier.",
+        tags: ["C++", "SMT", "Z3", "CMake"],
+        year: "2026",
+        accent: "purple",
+        featured: true,
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/sigil-lang" }],
+      },
+      {
+        title: "The Broadcast Ceiling",
+        eyebrow: "Paper · RL credit assignment",
+        summary:
+          "Limes Labs paper on information and reliability limits of advantage estimators in long-horizon RL, released with source, PDF, GitHub archive, and Zenodo DOI.",
+        detail: "DOI 10.5281/zenodo.20970205",
+        tags: ["Paper", "RL", "Python", "Zenodo"],
+        year: "2026",
+        accent: "blue",
+        featured: true,
+        links: [
+          { label: "DOI", href: "https://zenodo.org/records/20970205" },
+          {
+            label: "Release",
+            href: "https://github.com/Limes-Labs/the-broadcast-ceiling/releases/tag/v0.1.0",
+          },
+          { label: "Repo", href: "https://github.com/Limes-Labs/the-broadcast-ceiling" },
+        ],
+      },
+      {
+        title: "Limes Axis",
+        eyebrow: "Sovereign AI control plane",
+        summary:
+          "Open-source control plane for European operations: typed workflows, permissions, audit trails, model egress boundaries, approvals, and governed agent actions.",
+        tags: ["Python", "Governance", "AI operations"],
+        year: "2026",
+        accent: "orange",
+        links: [{ label: "GitHub", href: "https://github.com/Limes-Labs/limes-axis" }],
+      },
+      {
+        title: "Elliptic Rank ≥ 30",
+        eyebrow: "Certificate-first math research",
+        summary:
+          "Constructive pipeline toward rank E(Q) ≥ 30. Independently reproduces the public rank-29 baseline with exact, SageMath, and Magma evidence. No rank-30 certificate claimed.",
+        tags: ["Python", "SageMath", "Magma", "Math"],
+        year: "2026",
+        accent: "green",
+        links: [{ label: "GitHub", href: "https://github.com/metaforismo/elliptic-rank-30" }],
+      },
+      {
+        title: "TarsGPT",
+        eyebrow: "Physical AI runtime",
+        summary:
+          "Self-contained TARS-inspired robot runtime with voice, movement, dashboard, long-term memory, vision, skills, and bilingual build documentation.",
+        tags: ["Python", "Robotics", "Open source"],
+        year: "2025",
+        accent: "blue",
+        links: [
+          { label: "Website", href: "https://tars-gpt.vercel.app" },
+          { label: "GitHub", href: "https://github.com/metaforismo/TarsGPT" },
+        ],
+      },
+    ],
+  },
 ];
+
+export const archiveProjects = [
+  { title: "Hephaestus", href: "https://github.com/metaforismo/Hephaestus" },
+  { title: "Cumea", href: "https://github.com/metaforismo/Cumea" },
+  { title: "serve-droid", href: "https://github.com/metaforismo/serve-droid" },
+  { title: "Scriba", href: "https://github.com/metaforismo/scriba" },
+  { title: "VO Agent", href: "https://github.com/metaforismo/vo-agent" },
+  { title: "limen", href: "https://github.com/Limes-Labs/limen" },
+  { title: "Learning Signal Density", href: "https://github.com/Limes-Labs/learning-signal-density" },
+] as const;
 
 export type SkillGroup = {
   title: string;
@@ -255,19 +342,27 @@ export type SkillGroup = {
 export const skillGroups: SkillGroup[] = [
   {
     title: "Languages",
-    items: ["Python", "TypeScript", "JavaScript", "Swift", "Solidity", "Rust"],
+    items: ["TypeScript", "JavaScript", "Swift", "Python", "Rust", "C++"],
   },
   {
-    title: "Frameworks & Runtimes",
-    items: ["React", "Next.js", "Node.js", "Electron", "SwiftUI", "PyTorch", "Tailwind"],
+    title: "Interfaces",
+    items: ["React", "Next.js", "SwiftUI", "Expo", "Electron"],
   },
   {
-    title: "AI / ML",
-    items: ["OpenAI APIs", "LLM agents", "YOLO", "OpenCV", "Stable Diffusion", "GPT-2 from scratch"],
+    title: "Infrastructure",
+    items: ["Node.js", "Cloudflare", "SQLite", "PostgreSQL", "Docker", "GitHub Actions", "Git"],
   },
   {
-    title: "Tools & Platforms",
-    items: ["Git", "Docker", "Vercel", "Web3.js", "Ethereum", "Linux"],
+    title: "Systems",
+    items: [
+      "Tool-using agents",
+      "LLM evals",
+      "Tracing",
+      "Playwright",
+      "Z3 / SMT",
+      "CMake",
+      "Evidence tooling",
+    ],
   },
 ];
 
@@ -277,10 +372,32 @@ export type ExperienceItem = {
   period: string;
   blurb: string;
   highlights?: string[];
-  kind: "education" | "project" | "work" | "volunteer";
+  kind: "education" | "project" | "work" | "volunteer" | "founder" | "oss";
+  href?: string;
+  hrefLabel?: string;
 };
 
 export const experience: ExperienceItem[] = [
+  {
+    title: "Founder",
+    org: "Limes Labs",
+    period: "Jun 2026 · Present",
+    blurb:
+      "Building an open European AI research and engineering initiative across governed agent systems, model routing, evaluation infrastructure, reproducible research, and open-source AI tooling.",
+    kind: "founder",
+    href: "https://github.com/Limes-Labs",
+    hrefLabel: "Organization",
+  },
+  {
+    title: "Open Source Contributor",
+    org: "OpenClaw",
+    period: "Jul 2026 · Present",
+    blurb:
+      "23 upstream pull requests opened, 18 merged as of August 2026, across agent runtime, Gateway reliability and performance, automation, native iOS, and messaging/provider integrations including Mattermost, Feishu, and QQBot. Work typically goes from reproduction through implementation, focused regression tests, runtime evidence, review feedback, and upstream validation.",
+    kind: "oss",
+    href: "https://github.com/openclaw/openclaw/pulls?q=is%3Apr+author%3Ametaforismo",
+    hrefLabel: "Pull requests",
+  },
   {
     title: "BSc Computer Science & Artificial Intelligence",
     org: "Università della Calabria",
@@ -290,20 +407,20 @@ export const experience: ExperienceItem[] = [
     kind: "education",
   },
   {
-    title: "Hackathon · AI for Anti-Counterfeiting",
-    org: "Codemotion × Poligrafico Italiano",
-    period: "May · Jun 2024",
-    blurb:
-      "Delivered an MVP virtual assistant addressing global counterfeiting via AI-driven data tracing for the Made in Italy supply chain.",
-    kind: "project",
-  },
-  {
     title: "Social Media Manager",
     org: "Personal Brand",
     period: "Mar 2020 · Present",
     blurb: "Built a personal media presence from zero around tech, design and storytelling.",
     highlights: ["18K+ Instagram", "50K+ TikTok", "4M+ views · 2.5M+ likes", "5+ brand partnerships"],
     kind: "work",
+  },
+  {
+    title: "Hackathon · AI for Anti-Counterfeiting",
+    org: "Codemotion × Poligrafico Italiano",
+    period: "May · Jun 2024",
+    blurb:
+      "Delivered an MVP virtual assistant addressing global counterfeiting via AI-driven data tracing for the Made in Italy supply chain.",
+    kind: "project",
   },
   {
     title: "Volunteer · ENSA & ASS.A.P.L.I.",
@@ -358,6 +475,33 @@ export const articles: Article[] = [
     blurb:
       "Before you invest, the most important thing isn't finding the perfect product — it's understanding yourself.",
     source: "Thread",
+  },
+];
+
+export type Publication = {
+  title: string;
+  venue: string;
+  date: string;
+  blurb: string;
+  href: string;
+  extraLinks?: WorkLink[];
+};
+
+export const publications: Publication[] = [
+  {
+    title: "The Broadcast Ceiling",
+    venue: "Zenodo · Limes Labs",
+    date: "2026-06",
+    blurb:
+      "Mechanism audits for long-horizon RL credit assignment. Canonical PDF, source experiments, and SHA-256 paper manifest.",
+    href: "https://zenodo.org/records/20970205",
+    extraLinks: [
+      { label: "Repo", href: "https://github.com/Limes-Labs/the-broadcast-ceiling" },
+      {
+        label: "v0.1.0",
+        href: "https://github.com/Limes-Labs/the-broadcast-ceiling/releases/tag/v0.1.0",
+      },
+    ],
   },
 ];
 

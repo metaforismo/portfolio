@@ -61,10 +61,11 @@
 \begin{center}
   \textbf{\Huge \scshape Francesco Giannicola} \\ \vspace{2pt}
   \small
+  Software Engineer \& Builder $|$
   Cosenza, Italy / Europe $|$
   \href{mailto:francescogiannicola1@gmail.com}{francescogiannicola1@gmail.com} $|$
-  \href{https://github.com/metaforismo}{github.com/metaforismo} $|$
-  \href{https://www.linkedin.com/in/francescogiannicola/}{linkedin.com/in/francescogiannicola} $|$ \\
+  \href{https://github.com/metaforismo}{github.com/metaforismo} $|$ \\
+  \href{https://www.linkedin.com/in/francescogiannicola/}{linkedin.com/in/francescogiannicola} $|$
   \href{https://francescogiannicola.com}{francescogiannicola.com}
 \end{center}
 
@@ -78,54 +79,23 @@
     \resumeItemListEnd
 \resumeSubHeadingListEnd
 
-\section{Projects \& Research}
-\resumeSubHeadingListStart
-  \resumeSubheading
-    {Jurevo}{2026 -- Present}
-    {Full-Stack AI Legal Workspace}{\href{https://jurevo.it}{jurevo.it}}
-    \resumeItemListStart
-      \resumeItem{Founded and built an AI legal workspace for Italian law firms end to end: authenticated web app, backend API, native Expo mobile app, document workflows, billing, and storage in a single TypeScript monorepo.}
-      \resumeItem{Owned the system from zero to one in production, including backend-managed model credentials, Supabase auth, private R2/S3 storage, Stripe billing, workflow packs, CI checks, assistant drafting, tabular review, and document editing.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {TracePilot}{}
-    {Reliability Studio for Computer-Use Agents}{\href{https://github.com/metaforismo/tracepilot}{github.com/metaforismo/tracepilot}}
-    \resumeItemListStart
-      \resumeItem{Built an open-source eval and reliability harness for browser agents: trace replay, step-level verification, stuck-loop detection, prompt-injection tests, OpenAI Responses and Anthropic Computer Use adapters, readiness gate, and SHA-256 evidence packs.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {Limes Axis \& limen}{}
-    {Agent Infrastructure}{\href{https://github.com/Limes-Labs}{github.com/Limes-Labs}}
-    \resumeItemListStart
-      \resumeItem{Built Limes Axis, a self-hostable AI control plane for typed, permissioned, auditable human/agent workflows across operational data, approvals, connectors, and model routing; built limen as orchestration primitives for routing tasks across models, roles, workflows, and LoRA adapters.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {TarsGPT}{}
-    {Physical AI Agent}{\href{https://github.com/metaforismo/TarsGPT}{github.com/metaforismo/TarsGPT}}
-    \resumeItemListStart
-      \resumeItem{Designed and built a real-life TARS-inspired Raspberry Pi 5 robot with streaming LLM brain, tool-calling skills, balance-first gait, vision, memory recall, timers, music, home automation, and simulation mode.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {The Broadcast Ceiling / Learning Signal Density}{2026}
-    {RL Research Artifact}{\href{https://zenodo.org/records/20970205}{DOI: 10.5281/zenodo.20970205}}
-    \resumeItemListStart
-      \resumeItem{Built a reproducible long-horizon RL credit-assignment artifact with finite-MDP audits, estimator-fidelity diagnostics, exact-gradient experiments, sequence-policy audits, 51 passing tests, a 32-page LaTeX paper, Zenodo DOI, and SHA-256 manifest.}
-    \resumeItemListEnd
-
-  \resumeSubheading
-    {ML Fundamentals}{}
-    {From-Scratch Implementations}{\href{https://github.com/metaforismo}{github.com/metaforismo}}
-    \resumeItemListStart
-      \resumeItem{Reimplemented GPT-2, Stable Diffusion, and an open-source AlphaEvolve from scratch to build first-principles understanding of modern model architectures and training loops.}
-    \resumeItemListEnd
-\resumeSubHeadingListEnd
-
 \section{Experience \& Leadership}
 \resumeSubHeadingListStart
+  \resumeSubheading
+    {Founder}{Jun. 2026 -- Present}
+    {Limes Labs}{\href{https://github.com/Limes-Labs}{github.com/Limes-Labs}}
+    \resumeItemListStart
+      \resumeItem{Building an open European AI research and engineering initiative across governed agent systems, model routing, evaluation infrastructure, reproducible research, and open-source AI tooling.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Open Source Contributor}{Jul. 2026 -- Present}
+    {OpenClaw}{\href{https://github.com/openclaw/openclaw/pulls?q=is\%3Apr+author\%3Ametaforismo}{23 PRs opened / 18 merged}}
+    \resumeItemListStart
+      \resumeItem{23 upstream pull requests opened, 18 merged as of Aug 2026, across agent runtime, Gateway reliability and performance, automation, native iOS, and messaging/provider integrations.}
+      \resumeItem{Typical loop: reproduce the issue, implement a focused fix, add regression coverage, collect runtime evidence, and work through upstream review. Not a claim of sole authorship on every line represented by those PRs.}
+    \resumeItemListEnd
+
   \resumeSubheading
     {Founder \& Content Lead}{Mar. 2020 -- Present}
     {Francesco Tech / Personal Brand}{Italy}
@@ -134,14 +104,51 @@
     \resumeItemListEnd
 \resumeSubHeadingListEnd
 
+\section{Projects \& Research}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {IntentForm}{2026}
+    {Local-first semantic design environment}{\href{https://github.com/metaforismo/IntentForm}{github.com/metaforismo/IntentForm}}
+    \resumeItemListStart
+      \resumeItem{Built a design environment where humans and coding agents edit the same validated Semantic Interface Graph and compile it deterministically to React, Web, Expo, and SwiftUI, with fingerprint-bound verification.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Sigil}{2026}
+    {Experimental systems language and compiler}{\href{https://github.com/metaforismo/sigil-lang}{github.com/metaforismo/sigil-lang}}
+    \resumeItemListStart
+      \resumeItem{Implemented a compiler frontend with proof obligations, SMT-LIB verification, Z3, memory/ownership models, and a conditional GCC JIT native-lowering path. Research scaffold, not a production verifier.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {TracePilot}{2026}
+    {Reliability studio for computer-use agents}{\href{https://github.com/metaforismo/tracepilot}{github.com/metaforismo/tracepilot}}
+    \resumeItemListStart
+      \resumeItem{Built an open-source eval and reliability harness for browser agents: traces, replay, step-level verification, stuck-loop detection, provider adapters, readiness gates, and SHA-256 evidence packs.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Bite}{2026}
+    {Native iOS health product}{\href{https://github.com/metaforismo/Bite}{github.com/metaforismo/Bite}}
+    \resumeItemListStart
+      \resumeItem{Shipped a SwiftUI health coach with HealthKit, typed-tool AI workflows, memory, lab-report handling, widgets/Live Activities, and a Cloudflare Worker backend.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {The Broadcast Ceiling}{2026}
+    {RL research artifact}{\href{https://zenodo.org/records/20970205}{DOI: 10.5281/zenodo.20970205}}
+    \resumeItemListStart
+      \resumeItem{Released a reproducible long-horizon RL credit-assignment paper with finite-MDP audits, estimator-fidelity diagnostics, committed result tables, a canonical LaTeX PDF, and a Zenodo DOI.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0.15in,label={}]
   \small{\item{
-    \textbf{Languages}{: TypeScript, Python, JavaScript, Swift, SQL, Solidity, Rust basics, HTML/CSS} \\
-    \textbf{Frontend}{: React, Next.js, Tailwind CSS, Expo, React Native, Electron} \\
-    \textbf{Backend / Data}{: Node.js, Express, FastAPI, Supabase, PostgreSQL, REST APIs, Cloudflare R2, Stripe} \\
-    \textbf{AI / ML}{: LLM agents, RAG, evaluation, RL experiments, PyTorch basics, verifier workflows, reproducible artifacts} \\
-    \textbf{Tools}{: Git, Docker, Linux, GitHub Actions, Playwright, LaTeX, Vercel, Cloudflare, JSON/CLI tooling}
+    \textbf{Languages}{: TypeScript, JavaScript, Swift, Python, Rust, C++} \\
+    \textbf{Interfaces}{: React, Next.js, SwiftUI, Expo, Electron} \\
+    \textbf{Infrastructure}{: Node.js, Cloudflare, SQLite, PostgreSQL, Docker, GitHub Actions, Git} \\
+    \textbf{Systems}{: tool-using agents, LLM evals, tracing, Playwright, Z3/SMT, CMake, reproducible evidence tooling}
   }}
 \end{itemize}
 \vspace{-8pt}

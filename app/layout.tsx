@@ -32,21 +32,20 @@ const bulgaryRose = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://francescogiannicola.com"),
   title: {
-    default: "Francesco Giannicola, Computer Science & AI Student",
+    default: "Francesco Giannicola, Software Engineer & Builder",
     template: "%s · Francesco Giannicola",
   },
   description:
-    "Personal portfolio of Francesco Giannicola, founder of Limes Labs and Computer Science & AI student building AI products, research artifacts, and open-source agent systems.",
+    "Software engineer and founder of Limes Labs. Work across AI systems, developer tools, native apps, compilers, and applied research.",
   keywords: [
     "Francesco Giannicola",
     "metaforismo",
-    "AI",
-    "Machine Learning",
-    "AI agents",
     "Limes Labs",
-    "Jurevo",
-    "Robotics",
-    "Next.js",
+    "Software Engineer",
+    "Developer tools",
+    "Compilers",
+    "Native apps",
+    "Open source",
     "Portfolio",
   ],
   authors: [{ name: "Francesco Giannicola", url: "https://github.com/metaforismo" }],
@@ -55,14 +54,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://francescogiannicola.com",
-    title: "Francesco Giannicola, Founder of Limes Labs",
-    description: "AI products, research artifacts, and open-source agent systems by Francesco Giannicola.",
+    title: "Francesco Giannicola, Software Engineer & Builder",
+    description:
+      "AI systems, developer tools, native apps, compilers, and applied research. Founder of Limes Labs.",
     siteName: "Francesco Giannicola",
   },
   twitter: {
     card: "summary_large_image",
     title: "Francesco Giannicola",
-    description: "Founder of Limes Labs, building Jurevo, TarsGPT, VO Agent, and research artifacts.",
+    description:
+      "Software Engineer & Builder · AI systems, developer tools, native apps & compilers · Founder of Limes Labs.",
     creator: "@fragiannicola",
   },
 };
