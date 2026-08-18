@@ -14,7 +14,7 @@ export function Services() {
           return (
             <article
               key={title}
-              className="group rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] p-3.5 transition-colors hover:bg-[var(--bg-hover)]"
+              className="group rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] p-3.5 transition-[background-color,transform] duration-150 ease-out hover:bg-[var(--bg-hover)]"
             >
               <div className="flex items-start gap-3">
                 <div

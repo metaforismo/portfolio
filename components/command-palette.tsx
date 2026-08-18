@@ -89,7 +89,7 @@ export function CommandPalette() {
         onClick={() => setOpen(true)}
         aria-label="Open navigation menu"
         aria-keyshortcuts="Meta+K Control+K"
-        className="group fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full border border-[var(--border-line)] bg-[var(--bg-soft)]/90 px-3 py-2 text-[12px] text-[var(--muted)] shadow-sm backdrop-blur transition-colors hover:border-[var(--muted-soft)] hover:text-[var(--text)]"
+        className="group fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 rounded-full border border-[var(--border-line)] bg-[var(--bg-soft)]/90 px-3 py-2 text-[12px] text-[var(--muted)] shadow-sm backdrop-blur transition-[color,border-color,transform] duration-150 ease-out hover:border-[var(--muted-soft)] hover:text-[var(--text)] active:scale-[0.97]"
       >
         <Search className="h-3.5 w-3.5" strokeWidth={1.75} />
         <span className="hidden sm:inline">Jump to…</span>
@@ -110,10 +110,10 @@ export function CommandPalette() {
             aria-label="Close menu"
             tabIndex={-1}
             onClick={() => setOpen(false)}
-            className="absolute inset-0 cursor-default bg-black/40 backdrop-blur-sm animate-in fade-in-0"
+            className="absolute inset-0 cursor-default bg-black/40"
           />
 
-          <div className="relative w-full max-w-[460px] overflow-hidden rounded-xl border border-[var(--border-line)] bg-[var(--bg-soft)] shadow-2xl animate-in fade-in-0 zoom-in-95">
+          <div className="relative w-full max-w-[460px] overflow-hidden rounded-xl border border-[var(--border-line)] bg-[var(--bg-soft)] shadow-2xl">
             <div className="flex items-center gap-2.5 border-b border-[var(--border-line)] px-3.5 py-3">
               <Search className="h-4 w-4 shrink-0 text-[var(--muted)]" strokeWidth={1.75} />
               <input

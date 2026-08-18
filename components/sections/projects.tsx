@@ -3,6 +3,7 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
 import {
+  archiveProjects,
   selectedWorkTiers,
   type AccentColor,
   type SelectedWorkItem,
@@ -22,9 +23,8 @@ export function Projects() {
       </SectionHeading>
 
       <p className="mt-3 max-w-[64ch] text-[14px] leading-[1.7] text-[var(--text-soft)]">
-        A compact index of the work that best explains my current direction:
-        products with real surfaces, research artifacts with public evidence,
-        and agent infrastructure built around verification.
+        A compact index of work across product, infrastructure, compilers, and
+        research. Grouped so the breadth is readable, not a wall of equal cards.
       </p>
 
       <div className="mt-6 space-y-7">
@@ -55,9 +55,22 @@ export function Projects() {
         ))}
       </div>
 
-      <p className="mt-5 text-[13px] text-[var(--muted)]">
-        Secondary archive: Scriba, Aurion, Bite, OpenAlphaEvolve, GPT-2 from
-        scratch, Stable Diffusion from scratch, and other experiments live on{" "}
+      <p className="mt-5 text-[13px] leading-[1.6] text-[var(--muted)]">
+        Also public:{" "}
+        {archiveProjects.map((project, index) => (
+          <span key={project.href}>
+            <Link
+              href={project.href}
+              target="_blank"
+              rel="noopener"
+              className="text-[var(--text)] link-underline hover:text-[var(--accent-yellow)]"
+            >
+              {project.title}
+            </Link>
+            {index < archiveProjects.length - 1 ? ", " : ""}
+          </span>
+        ))}
+        , and older experiments on{" "}
         <Link
           href="https://github.com/metaforismo"
           target="_blank"
@@ -78,7 +91,7 @@ function WorkItem({ item }: { item: SelectedWorkItem }) {
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] transition-colors hover:border-[var(--muted-soft)] hover:bg-[var(--bg-hover)]",
+        "group relative overflow-hidden rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] transition-[transform,border-color,background-color,box-shadow] duration-200 ease-out hover:-translate-y-px hover:border-[var(--muted-soft)] hover:bg-[var(--bg-hover)] hover:shadow-[0_8px_24px_-18px_rgba(0,0,0,0.55)]",
         item.featured ? "p-4" : "p-3",
       )}
     >

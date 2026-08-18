@@ -68,6 +68,8 @@
 
     --accent-yellow: #facc15;
     --accent-yellow-soft: #fde68a;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 
     /* GitHub contributions defaults — overridden per-theme by the picker */
     --gh-l0: #1f1f1f;
@@ -241,7 +243,7 @@
     text-decoration: underline;
     text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
     text-underline-offset: 3px;
-    transition: text-decoration-color 200ms ease;
+    transition: text-decoration-color 150ms var(--ease-out, ease-out);
   }
   .link-underline:hover {
     text-decoration-color: currentColor;
@@ -249,9 +251,35 @@
 
   /* Notion-style hover row (used in projects + experience) */
   .notion-row {
-    transition: background-color 100ms ease;
+    transition: background-color 100ms var(--ease-out, ease-out);
   }
   .notion-row:hover {
     background-color: var(--bg-hover);
+  }
+
+  @keyframes social-preview-in {
+    from {
+      opacity: 0.35;
+      filter: blur(2px);
+      transform: translateX(var(--preview-x, 8px));
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+    }
+  }
+
+  .animate-social-preview {
+    animation: social-preview-in 160ms var(--ease-out, ease-out);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .animate-social-preview {
+      animation: none;
+    }
   }
 }

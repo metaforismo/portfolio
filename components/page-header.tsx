@@ -1,27 +1,11 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Github,
-  Instagram,
-  Linkedin,
-  MapPin,
-  Twitter,
-  Youtube,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
 import { AgeCounter } from "@/components/age-counter";
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { SocialIconRow } from "@/components/social-icon-row";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { profile, socials } from "@/lib/data";
-
-const SOCIAL_ICONS: Record<string, LucideIcon> = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  "X / Twitter": Twitter,
-  Instagram: Instagram,
-  YouTube: Youtube,
-};
+import { profile } from "@/lib/data";
 
 export function PageHeader() {
   return (
@@ -41,12 +25,16 @@ export function PageHeader() {
         <span aria-hidden className="text-[42px] leading-none sm:text-[56px]">🧡</span>
       </div>
 
-      <h1 className="text-[36px] font-semibold tracking-tight text-[var(--text)] sm:text-[44px] leading-[1.1]">
+      <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-[var(--muted)]">
+        {profile.role}
+      </p>
+
+      <h1 className="mt-2 text-[36px] font-semibold tracking-tight text-[var(--text)] sm:text-[44px] leading-[1.1]">
         {profile.name}
       </h1>
 
-      <p className="mt-3 text-[15px] text-[var(--muted)] sm:text-[16px]">
-        {profile.headline}.
+      <p className="mt-3 max-w-[58ch] text-pretty text-[15px] leading-[1.6] text-[var(--muted)] sm:text-[16px]">
+        {profile.headline}
       </p>
 
       <Properties />
@@ -55,33 +43,9 @@ export function PageHeader() {
   );
 }
 
-function SocialIconRow() {
-  return (
-    <nav aria-label="Social links" className="mt-6 flex flex-wrap items-center gap-1">
-      {socials.map((s) => {
-        const Icon = SOCIAL_ICONS[s.label];
-        if (!Icon) return null;
-        return (
-          <Link
-            key={s.label}
-            href={s.href}
-            target="_blank"
-            rel="noopener"
-            aria-label={s.label}
-            title={`${s.label} · ${s.handle}`}
-            className="group inline-flex h-9 w-9 items-center justify-center rounded-md text-[var(--muted)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text)]"
-          >
-            <Icon className="h-4 w-4" strokeWidth={1.5} />
-          </Link>
-        );
-      })}
-    </nav>
-  );
-}
-
 function Properties() {
   return (
-    <dl className="mt-8 grid grid-cols-[110px_1fr] gap-x-3 gap-y-1.5 text-[14px]">
+    <dl className="mt-8 grid grid-cols-[92px_1fr] gap-x-3 gap-y-1.5 text-[14px] sm:grid-cols-[110px_1fr]">
       <Row icon={<MapPin className="h-3.5 w-3.5" strokeWidth={1.75} />} label="Location">
         <span className="text-[var(--text)]">{profile.location}</span>
       </Row>
