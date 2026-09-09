@@ -1,6 +1,7 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
+import { useInView } from "motion/react";
 import dynamic from "next/dynamic";
 import { ArrowUpRight, Github } from "lucide-react";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import {
   GitHubContributionsFallback,
-} from "@/components/github-contributions";
+} from "@/components/github-contributions-fallback";
 import {
   GithubThemePicker,
   GithubThemeScope,
@@ -27,13 +28,15 @@ export function GitHubSection({
   contributionsPromise,
 }: {
   contributionsPromise: Promise<
-    import("@/components/contribution-graph").Activity[]
+    import("@/components/contribution-graph").Activity[] | null
   >;
 }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const visible = useInView(sectionRef, { once: true, margin: "300px" });
   const { theme, setTheme } = useGithubTheme();
 
   return (
-    <section id="github" className="scroll-mt-8">
+    <section ref={sectionRef} id="github" className="scroll-mt-8">
       <SectionHeading
         emoji="📊"
         hint={`Live · @${githubUsername}`}
@@ -54,10 +57,10 @@ export function GitHubSection({
         className="mt-3 rounded-md border border-[var(--border-line)] bg-[var(--bg-soft)] p-3 sm:p-4"
       >
         <Suspense fallback={<GitHubContributionsFallback />}>
-          <GitHubContributions
+          {visible ? <GitHubContributions
             contributions={contributionsPromise}
             githubProfileUrl={`https://github.com/${githubUsername}`}
-          />
+          /> : <GitHubContributionsFallback />}
         </Suspense>
 
         <div className="mt-3 flex items-center justify-between border-t border-[var(--divider)] pt-3 text-[12px] font-mono text-[var(--muted)]">

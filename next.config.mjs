@@ -1,11 +1,8 @@
+import { fileURLToPath } from "node:url";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  outputFileTracingRoot: fileURLToPath(new URL(".", import.meta.url)),
   images: {
     remotePatterns: [
       {
