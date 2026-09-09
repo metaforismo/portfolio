@@ -40,3 +40,17 @@ test('provider failures stay unavailable and a subsequent success recovers', asy
     assert.deepEqual(await getCachedContributions('test'), activity);
   } finally { globalThis.fetch = original; }
 });
+
+
+test('provider accepts a year padded to calendar weeks and rejects oversized payloads', async () => {
+  const original = globalThis.fetch;
+  try {
+    const year = Array.from({ length: 368 }, (_, i) => ({
+      date: new Date(Date.UTC(2025, 8, 7 + i)).toISOString().slice(0, 10), count: 0, level: 0,
+    }));
+    globalThis.fetch = async () => Response.json({ contributions: year });
+    assert.deepEqual(await getCachedContributions('test'), year);
+    globalThis.fetch = async () => Response.json({ contributions: Array(372).fill(activity[0]) });
+    assert.equal(await getCachedContributions('test'), null);
+  } finally { globalThis.fetch = original; }
+});
