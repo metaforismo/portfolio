@@ -10,8 +10,9 @@ const loadContributions = unstable_cache(
     )
     if (!res.ok) throw new Error(`Contribution provider returned ${res.status}`)
     const data = await res.json()
+    // The provider includes a partial first week: allow up to 53 full weeks.
     if (!Array.isArray(data.contributions) || !data.contributions.length ||
-        data.contributions.length > 366 || !data.contributions.every((entry: Activity) =>
+        data.contributions.length > 371 || !data.contributions.every((entry: Activity) =>
           entry && typeof entry.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(entry.date) &&
           Number.isFinite(Date.parse(entry.date)) && Number.isInteger(entry.count) && entry.count >= 0 &&
           Number.isInteger(entry.level) && entry.level >= 0 && entry.level <= 4
