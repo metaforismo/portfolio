@@ -118,3 +118,11 @@ test('HEAD discovery files preserve metadata without a body', async () => {
   assert.match(unsupported.headers.get('content-type'), /text\/plain/);
   assert.equal(await unsupported.text(), '');
 });
+
+test('machine response handler rejects unknown content and is not indexable', async () => {
+  for (const path of ['/agent-content', '/agent-content?path=/unknown', '/agent-content?path=/constructor']) {
+    const response = await get(path);
+    assert.equal(response.status, 404);
+    assert.equal(response.headers.get('x-robots-tag'), 'noindex');
+  }
+});

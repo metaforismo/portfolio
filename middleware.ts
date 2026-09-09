@@ -1,40 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import Negotiator from "negotiator";
-import { llmsMarkdown, pageMarkdown, pagePaths } from "@/lib/site-content";
+import { pagePaths } from "@/lib/site-content";
 
 export function middleware(request: NextRequest) {
   if (request.method !== "GET" && request.method !== "HEAD") return NextResponse.next();
   const path = request.nextUrl.pathname;
   const alias = path === "/index.md" ? "/" : path.endsWith(".md") ? path.slice(0, -3) : undefined;
   const page = pagePaths.includes(path);
-  if (!page && !alias && path !== "/llms.txt") return NextResponse.next();
+  if (!page && path !== "/llms.txt" && (!alias || !pagePaths.includes(alias))) return NextResponse.next();
   const headers = new Headers({
     Vary: "Accept, Accept-Encoding, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
     "Cache-Control": "private, no-store",
     "Link": '</llms.txt>; rel="describedby"',
   });
-  const send = (body: string, status = 200) => {
-    headers.set("Content-Type", "text/markdown; charset=utf-8");
-    // Let the HTTP server suppress HEAD bytes while preserving representation headers.
-    return new NextResponse(body, { status, headers });
+  const machineResponse = (unacceptable = false) => {
+    const target = request.nextUrl.clone();
+    target.pathname = "/agent-content";
+    target.search = "";
+    target.searchParams.set("path", path);
+    if (unacceptable) target.searchParams.set("unacceptable", "1");
+    return NextResponse.rewrite(target, { headers });
   };
-  if (path === "/llms.txt") return send(llmsMarkdown);
-  if (alias) {
-    const body = pageMarkdown(alias);
-    if (!body) return NextResponse.next();
-    headers.set("X-Robots-Tag", "noindex");
-    headers.append("Link", `<${alias}>; rel="canonical"`);
-    return send(body);
-  }
+  if (path === "/llms.txt" || alias) return machineResponse();
   headers.append("Link", `<${path === "/" ? "/index.md" : `${path}.md`}>; rel="alternate"; type="text/markdown"`);
   // RSC and prefetch requests belong to Next's internal representation protocol.
   if (!request.headers.has("rsc")) {
     const type = new Negotiator({ headers: { accept: request.headers.get("accept") ?? "*/*" } }).mediaType(["text/html", "text/markdown"]);
-    if (!type) {
-      headers.set("Content-Type", "text/plain; charset=utf-8");
-      return new NextResponse("Available representations: text/html, text/markdown.\n", { status: 406, headers });
-    }
-    if (type === "text/markdown") return send(pageMarkdown(path)!);
+    if (!type) return machineResponse(true);
+    if (type === "text/markdown") return machineResponse();
   }
   return NextResponse.next({ headers });
 }
