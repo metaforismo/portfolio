@@ -15,7 +15,8 @@ export function middleware(request: NextRequest) {
   });
   const send = (body: string, status = 200) => {
     headers.set("Content-Type", "text/markdown; charset=utf-8");
-    return new NextResponse(request.method === "HEAD" ? null : body, { status, headers });
+    // Let the HTTP server suppress HEAD bytes while preserving representation headers.
+    return new NextResponse(body, { status, headers });
   };
   if (path === "/llms.txt") return send(llmsMarkdown);
   if (alias) {
@@ -31,7 +32,7 @@ export function middleware(request: NextRequest) {
     const type = new Negotiator({ headers: { accept: request.headers.get("accept") ?? "*/*" } }).mediaType(["text/html", "text/markdown"]);
     if (!type) {
       headers.set("Content-Type", "text/plain; charset=utf-8");
-      return new NextResponse(request.method === "HEAD" ? null : "Available representations: text/html, text/markdown.\n", { status: 406, headers });
+      return new NextResponse("Available representations: text/html, text/markdown.\n", { status: 406, headers });
     }
     if (type === "text/markdown") return send(pageMarkdown(path)!);
   }

@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 const base = process.env.TEST_BASE_URL || 'http://localhost:3000';
 const origin = 'https://francescogiannicola.com';
 const pages = ['/', '/about', '/contact', '/privacy'];
@@ -94,4 +95,26 @@ test('alternating variants and RSC remain isolated', async () => {
   for (const type of ['text/markdown', 'text/html', 'text/markdown', 'text/html']) assert.ok((await get('/', type)).headers.get('content-type').startsWith(type));
   const r = await fetch(base + '/about', { headers: { RSC: '1', Accept: '*/*' } });
   assert.equal(r.status, 200); assert.match(r.headers.get('content-type'), /text\/x-component/);
+});
+
+test('Vercel applies response transforms only to negotiated page paths', () => {
+  const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url)));
+  const route = config.routes[0];
+  const pattern = new RegExp(route.src);
+  for (const path of pages) assert.ok(pattern.test(path));
+  for (const path of ['/robots.txt', '/sitemap.xml', '/_next/static/app.js', '/missing']) assert.ok(!pattern.test(path));
+  assert.equal(route.continue, true);
+  assert.deepEqual(route.transforms, [{ type: 'response.headers', op: 'append', target: { key: 'Vary' }, args: ['Accept', 'Accept-Encoding'] }]);
+});
+test('HEAD discovery files preserve metadata without a body', async () => {
+  for (const path of ['/llms.txt', '/index.md', '/about.md', '/contact.md', '/privacy.md']) {
+    const response = await get(path, 'text/markdown', 'HEAD');
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get('content-type'), /text\/markdown/);
+    assert.equal(await response.text(), '');
+  }
+  const unsupported = await get('/', 'application/json', 'HEAD');
+  assert.equal(unsupported.status, 406);
+  assert.match(unsupported.headers.get('content-type'), /text\/plain/);
+  assert.equal(await unsupported.text(), '');
 });
