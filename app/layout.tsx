@@ -60,6 +60,7 @@ export const metadata: Metadata = {
   creator: "Francesco Giannicola",
   openGraph: {
     type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Francesco Giannicola — Software Engineer & Builder" }],
     locale: "en_US",
     url: "https://francescogiannicola.com",
     title: "Francesco Giannicola, Software Engineer & Builder",

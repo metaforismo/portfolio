@@ -1,0 +1,41 @@
+name: Agent readiness
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: agent-readiness-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      GITHUB_CONTRIBUTIONS_API_URL: http://127.0.0.1:3101
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Start deterministic contribution fixture
+        run: node tests/contributions-fixture.mjs > /tmp/contributions.log 2>&1 &
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Verify production endpoints
+        run: |
+          npm start -- --hostname 127.0.0.1 > /tmp/portfolio.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3000/robots.txt > /dev/null; then break; fi
+            sleep 1
+          done
+          npm test
+      - name: Server logs on failure
+        if: failure()
+        run: cat /tmp/portfolio.log /tmp/contributions.log 2>/dev/null || true

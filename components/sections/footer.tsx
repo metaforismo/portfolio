@@ -61,6 +61,10 @@ export function Footer() {
         </ul>
       </div>
 
+      <nav aria-label="Site information" className="mt-8 flex gap-5 text-[12px] text-[var(--muted)]">
+        {["About", "Contact", "Privacy"].map(label => <Link key={label} href={`/${label.toLowerCase()}`} className="link-underline">{label}</Link>)}
+      </nav>
+
       <footer className="mt-14 flex items-end justify-between gap-4 border-t border-[var(--divider)] pt-6 pb-4 text-[12px] text-[var(--muted)]">
         <span>© {year} Francesco Giannicola</span>
         <Signature />

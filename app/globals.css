@@ -284,3 +284,11 @@
     }
   }
 }
+
+/* Shared across hundreds of cells instead of repeating utility markup. */
+.contribution-cell { transition: fill 500ms ease-out; }
+.contribution-cell[data-level="0"] { fill: var(--gh-l0); }
+.contribution-cell[data-level="1"] { fill: var(--gh-l1); }
+.contribution-cell[data-level="2"] { fill: var(--gh-l2); }
+.contribution-cell[data-level="3"] { fill: var(--gh-l3); }
+.contribution-cell[data-level="4"] { fill: var(--gh-l4); }
