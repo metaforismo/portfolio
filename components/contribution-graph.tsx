@@ -72,14 +72,7 @@ const DEFAULT_LABELS: Labels = {
   },
 }
 
-const THEME = cn(
-  'data-[level="0"]:fill-[var(--gh-l0)]',
-  'data-[level="1"]:fill-[var(--gh-l1)]',
-  'data-[level="2"]:fill-[var(--gh-l2)]',
-  'data-[level="3"]:fill-[var(--gh-l3)]',
-  'data-[level="4"]:fill-[var(--gh-l4)]',
-  'transition-[fill] duration-500 ease-out'
-)
+const THEME = "contribution-cell"
 
 type ContributionGraphContextType = {
   data: Activity[]

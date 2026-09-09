@@ -1,12 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { ArrowUpRight, Github } from "lucide-react";
 import Link from "next/link";
 
 import { SectionHeading } from "@/components/section-heading";
 import {
-  GitHubContributions,
   GitHubContributionsFallback,
 } from "@/components/github-contributions";
 import {
@@ -15,6 +15,13 @@ import {
   useGithubTheme,
 } from "@/components/github-theme-picker";
 import { githubUsername } from "@/lib/data";
+
+// This interactive visualization is progressive enhancement; the profile link
+// and portfolio prose remain server-rendered for non-JavaScript readers.
+const GitHubContributions = dynamic(
+  () => import("@/components/github-contributions").then(module => module.GitHubContributions),
+  { ssr: false, loading: GitHubContributionsFallback },
+);
 
 export function GitHubSection({
   contributionsPromise,
