@@ -47,3 +47,9 @@ After deployment, run `TEST_BASE_URL=https://francescogiannicola.com npm test`, 
 - https://www.sitemaps.org/protocol.html
 - https://schema.org/Person
 - https://vercel.com/docs/analytics/privacy-policy
+
+## Vercel response-header correction
+
+The first production deployment exposed behavior not reproduced by `next start`: static HTML responses replaced middleware Vary with Next router dimensions, and empty middleware HEAD responses lost Content-Type. A scoped Vercel response transform appends Accept and Accept-Encoding without replacing router dimensions. Middleware rewrites machine responses to a route handler with explicit GET and HEAD exports, preserving representation metadata in the Vercel function adapter. The handler is noindex and rejects unknown content paths. Additional tests cover HEAD discovery files and 406s; the original HTML Vary assertions remain unchanged.
+
+Configuration reference: https://vercel.com/docs/project-configuration/vercel-json#transform-object-definition
