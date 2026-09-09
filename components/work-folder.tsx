@@ -1,16 +1,13 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useMemo, useState, useRef } from "react";
+import { motion, useReducedMotion, useInView } from "motion/react";
 
 import { WorkPaper } from "@/components/work-paper";
 import type { SelectedWorkItem } from "@/lib/data";
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 const PAPER_COUNT = 5;
-const subscribeToHydration = () => () => {};
-const clientSnapshot = () => true;
-const serverSnapshot = () => false;
 
 function useImagePositions(landscape: boolean) {
   return useMemo(() => {
@@ -33,9 +30,9 @@ export function WorkFolder({
   item: SelectedWorkItem;
   onOpen: () => void;
 }) {
-  // Decorative image stacks add no readable content; enhance the server-rendered
-  // folder button after hydration, retaining its size, title and interactions.
-  const hydrated = useSyncExternalStore(subscribeToHydration, clientSnapshot, serverSnapshot);
+  // Load decorative previews shortly before their folder enters the viewport.
+  const folderRef = useRef<HTMLButtonElement>(null);
+  const visible = useInView(folderRef, { once: true, margin: "300px" });
   const [hovered, setHovered] = useState(false);
   const landscape = item.paperShape === "landscape";
   const positions = useImagePositions(landscape);
@@ -44,6 +41,7 @@ export function WorkFolder({
 
   return (
     <motion.button
+      ref={folderRef}
       type="button"
       aria-label={`Open ${item.title}`}
       className="group relative w-full cursor-pointer overflow-visible text-left outline-none focus-visible:ring-2 focus-visible:ring-white/25"
@@ -90,7 +88,7 @@ export function WorkFolder({
             transition={{ type: "spring", stiffness: 200, damping: 25, mass: 0.8 }}
             style={{ transformStyle: "flat", transformOrigin: "center bottom" }}
           >
-            {hydrated && positions.map((pos, imgIndex) => {
+            {visible && positions.map((pos, imgIndex) => {
               const centerIndex = 2;
               const distance = Math.abs(imgIndex - centerIndex);
               const zIndex = 10 - distance;

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { SelectedWorkItem } from "@/lib/data";
 
 export function WorkPaper({
@@ -22,10 +23,11 @@ export function WorkPaper({
       }}
     >
       {src ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           src={src}
           alt=""
+          fill
+          sizes={item.paperShape === "landscape" ? "168px" : "110px"}
           className={
             fit === "contain"
               ? "h-full w-full bg-white object-contain object-top"

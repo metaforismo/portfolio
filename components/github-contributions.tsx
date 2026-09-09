@@ -3,7 +3,6 @@
 import { format } from "date-fns"
 import { use } from "react"
 
-import { Spinner } from "@/components/ui/spinner"
 import {
   Tooltip,
   TooltipContent,
@@ -25,11 +24,12 @@ export function GitHubContributions({
   githubProfileUrl,
   className,
 }: {
-  contributions: Promise<Activity[]>
+  contributions: Promise<Activity[] | null>
   githubProfileUrl: string
   className?: string
 }) {
   const data = use(contributions)
+  if (!data) return <p className="py-8 text-center text-sm text-[var(--muted)]">Contribution data is temporarily unavailable.</p>
 
   return (
     <ContributionGraph
@@ -85,13 +85,5 @@ export function GitHubContributions({
         <ContributionGraphLegend />
       </ContributionGraphFooter>
     </ContributionGraph>
-  )
-}
-
-export function GitHubContributionsFallback() {
-  return (
-    <div className="flex h-40.5 w-full items-center justify-center">
-      <Spinner className="text-muted-foreground" />
-    </div>
   )
 }

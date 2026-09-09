@@ -22,6 +22,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - run: npm audit --audit-level=high
+      - run: npm run lint
       - name: Start deterministic contribution fixture
         run: node tests/contributions-fixture.mjs > /tmp/contributions.log 2>&1 &
       - run: npm run build
